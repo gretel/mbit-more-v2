@@ -169,10 +169,10 @@
 
             // Check Bluetooth support
             if (navigator.bluetooth) {
-                statusHTML += '<br><br>🔵 Bluetooth wird unterstützt - kein Scratch Link nötig!';
+                statusHTML += '<br><br>🔵 Bluetooth wird unterstützt - perfekt!';
                 statusBox.className = 'status-box status-good';
             } else {
-                statusHTML += '<br><br>⚠️ Dein Browser unterstützt kein Bluetooth direkt. Du brauchst <a href="https://scratch.mit.edu/microbit" target="_blank" style="color: inherit; text-decoration: underline;">Scratch Link</a>.';
+                statusHTML += '<br><br>⚠️ Dein Browser unterstützt kein Bluetooth. Bitte nutze <strong>Chrome</strong> oder <strong>Edge</strong> für die beste Erfahrung.';
                 if (browserLang.startsWith('de')) {
                     statusBox.className = 'status-box status-warning';
                 }
@@ -248,8 +248,9 @@
             Bevor ihr den micro:bit mit Xcratch nutzen könnt, muss auf dem micro:bit die richtige Hex-Datei installiert sein. Diese bekommt ihr hier: <a href="https://scratch.mit.edu/microbit" target="_blank" style="color: #667eea;">scratch.mit.edu/microbit</a><br>
             Ladet die Datei herunter und kopiert sie auf den micro:bit (wie einen USB-Stick).</p>
 
-            <p><strong>💡 Gut zu wissen: Kein Scratch Link nötig!</strong><br>
-            Viele Browser (Chrome, Edge) unterstützen Bluetooth direkt. Dann braucht ihr kein zusätzliches Programm installieren - einfach Browser öffnen und loslegen! Nur bei älteren Browsern wird "Scratch Link" benötigt.</p>
+            <p><strong>💡 Welcher Browser funktioniert?</strong><br>
+            <strong>Empfohlen:</strong> Chrome oder Edge - diese unterstützen Bluetooth direkt und funktionieren am besten.<br>
+            <strong>Nicht geeignet:</strong> Firefox und Safari unterstützen leider kein Web-Bluetooth.</p>
         </div>
 
         <div class="footer">
