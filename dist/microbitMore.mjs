@@ -5039,8 +5039,20 @@ var formatMessage = function formatMessage(messageData) {
  */
 var setupTranslations = function setupTranslations() {
   var localeSetup = formatMessage.setup();
-  if (localeSetup && localeSetup.translations[localeSetup.locale]) {
-    Object.assign(localeSetup.translations[localeSetup.locale], translations[localeSetup.locale]);
+  if (!localeSetup) return;
+
+  var currentLocale = localeSetup.locale;
+  if (!currentLocale) return;
+
+  // Try exact match first, then fall back to base locale (e.g., 'de-DE' -> 'de')
+  var baseLocale = currentLocale.split('-')[0].split('_')[0];
+  var translationKey = translations[currentLocale] ? currentLocale : null;
+  if (!translationKey && baseLocale !== currentLocale) {
+    translationKey = translations[baseLocale] ? baseLocale : null;
+  }
+
+  if (localeSetup.translations[currentLocale] && translationKey) {
+    Object.assign(localeSetup.translations[currentLocale], translations[translationKey]);
   }
 };
 var EXTENSION_ID = 'microbitMore';
