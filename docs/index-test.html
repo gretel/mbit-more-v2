@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroBit More v2 - Locale Fallback Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #4C97FF;
+        }
+        .button {
+            display: inline-block;
+            background: #4C97FF;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 5px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #3373CC;
+        }
+        .button.secondary {
+            background: #59C059;
+        }
+        .button.secondary:hover {
+            background: #3DA43D;
+        }
+        .info-box {
+            background: #f5f5f5;
+            border-left: 4px solid #4C97FF;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        code {
+            background: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        pre {
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 MicroBit More v2 - Locale Fallback Test Build</h1>
+
+    <div class="info-box">
+        <strong>What's New:</strong> This test build includes locale fallback support for German translations.
+        <br>Now <code>de-DE</code>, <code>de_DE</code> → automatically use <code>de</code> translations.
+    </div>
+
+    <h2>🚀 Quick Start</h2>
+
+    <a href="https://xcratch.github.io/editor/#https://gretel.github.io/mbit-more-v2/docs/projects/microbit-more-test.sb3"
+       class="button">
+        Open in Xcratch (Auto-Load Extension)
+    </a>
+
+    <h2>📋 Manual Load</h2>
+
+    <p>Or load the extension manually in Xcratch:</p>
+    <ol>
+        <li>Go to <a href="https://xcratch.github.io/editor" target="_blank">Xcratch Editor</a></li>
+        <li>Click "Add Extension" button</li>
+        <li>Select "Extension Loader"</li>
+        <li>Enter this URL:</li>
+    </ol>
+
+    <pre>https://gretel.github.io/mbit-more-v2/dist/microbitMore.mjs</pre>
+
+    <h2>🇩🇪 Test German Translations</h2>
+
+    <div class="warning-box">
+        <strong>To test German translations:</strong>
+        <ol>
+            <li>Set your browser language to German (de-DE)</li>
+            <li>Reload the Xcratch editor</li>
+            <li>The blocks should appear in German</li>
+        </ol>
+    </div>
+
+    <h2>🔗 Resources</h2>
+
+    <ul>
+        <li><a href="https://github.com/gretel/mbit-more-v2">Fork Repository</a></li>
+        <li><a href="https://github.com/microbit-more/mbit-more-v2">Original Repository</a></li>
+        <li><a href="https://microbit-more.github.io/">Official MicroBit More Website</a></li>
+    </ul>
+
+    <h2>⚙️ Technical Details</h2>
+
+    <p><strong>Extension URL:</strong></p>
+    <pre>https://gretel.github.io/mbit-more-v2/dist/microbitMore.mjs</pre>
+
+    <p><strong>Project File:</strong></p>
+    <pre>https://gretel.github.io/mbit-more-v2/docs/projects/microbit-more-test.sb3</pre>
+
+    <p><strong>Changes:</strong></p>
+    <ul>
+        <li>✅ Locale fallback: <code>de-DE</code> → <code>de</code></li>
+        <li>✅ Underscore variants: <code>de_DE</code> → <code>de</code></li>
+        <li>✅ All existing locales work unchanged</li>
+    </ul>
+
+    <hr style="margin: 40px 0;">
+
+    <p style="text-align: center; color: #666;">
+        Test build • <a href="https://github.com/microbit-more/mbit-more-v2/pulls">View Pull Request</a>
+    </p>
+</body>
+</html>
