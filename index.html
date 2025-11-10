@@ -147,25 +147,22 @@
         <div class="info-section">
             <h3>ℹ️ Technische Informationen</h3>
 
-            <p><strong>Was ist Scratch?</strong><br>
-            Scratch ist eine visuelle Programmiersprache vom MIT, bei der Kinder mit bunten Blöcken (statt kompliziertem Code) programmieren lernen. Weltweit nutzen Millionen von Kindern Scratch im Unterricht und zu Hause.</p>
+            <p><strong>Verwendete Technologien</strong></p>
 
-            <p><strong>Was ist ein micro:bit?</strong><br>
-            Der BBC micro:bit ist ein kleiner Computer (ca. 4×5 cm) mit LED-Display, Sensoren und Knöpfen. Er wurde entwickelt, um Kindern spielerisch das Programmieren beizubringen. Viele Schulen nutzen micro:bit im Informatikunterricht.</p>
+            <p><a href="https://github.com/scratchfoundation/scratch-gui" target="_blank" style="color: #667eea;"><strong>Scratch</strong></a> ist eine visuelle Programmiersprache, die am MIT Media Lab entwickelt wurde. Sie ermöglicht das Erlernen grundlegender Programmierkonzepte durch blockbasiertes Coding und wird weltweit in pädagogischen Kontexten eingesetzt.</p>
 
-            <p><strong>Was ist Xcratch?</strong><br>
-            Xcratch ist eine modifizierte Version von Scratch vom MIT, die es ermöglicht, zusätzliche Erweiterungen einfach zu laden. Im normalen Scratch können wir den micro:bit nicht nutzen - mit Xcratch können wir die "MicroBit More" Erweiterung laden und damit alle Funktionen des micro:bit nutzen.</p>
+            <p>Der <a href="https://github.com/bbcmicrobit" target="_blank" style="color: #667eea;"><strong>BBC micro:bit</strong></a> ist eine ARM-basierte Embedded-Plattform (4×5 cm) mit integriertem 5×5 LED-Matrix-Display, Beschleunigungssensor, Magnetometer, zwei programmierbaren Tastern sowie GPIO-Pins. Die Hardware wurde für den Einsatz im MINT-Unterricht konzipiert.</p>
 
-            <p><strong>Warum nutzen wir Xcratch?</strong><br>
-            Das normale Scratch vom MIT hat nur begrenzte micro:bit-Unterstützung. Xcratch erlaubt uns, die vollständige "MicroBit More" Erweiterung zu laden, die alle Sensoren, Pins und Funktionen des micro:bit freigibt. So können Kinder ihre Programme in der echten Welt testen und lernen, wie Programmierung praktisch funktioniert!</p>
+            <p><a href="https://github.com/xcratch" target="_blank" style="color: #667eea;"><strong>Xcratch</strong></a> ist eine erweiterte Scratch-Implementierung, die das dynamische Laden von Drittanbieter-Extensions unterstützt. Dies ermöglicht die Integration spezialisierter Hardware-Schnittstellen, die in der Standard-Scratch-Umgebung nicht verfügbar sind.</p>
 
-            <p><strong>⚠️ Wichtig: micro:bit vorbereiten</strong><br>
-            Bevor ihr den micro:bit mit Xcratch nutzen könnt, muss auf dem micro:bit die richtige Hex-Datei installiert sein. Diese bekommt ihr hier: <a href="https://github.com/microbit-more/pxt-mbit-more-v2/releases/download/0.2.5/microbit-mbit-more-v2-0_2_5.hex" target="_blank" style="color: #667eea;">microbit-mbit-more-v2-0_2_5.hex</a><br>
-            Ladet die Datei herunter und kopiert sie auf den micro:bit (wie einen USB-Stick). Der micro:bit muss dafür einmalig per Kabel mit dem Computer verbunden werden.</p>
+            <p>Die <a href="https://github.com/microbit-more/mbit-more-v2" target="_blank" style="color: #667eea;"><strong>MicroBit More</strong></a> Extension stellt eine umfassende Programmierschnittstelle für den micro:bit bereit. Im Gegensatz zur Standard-micro:bit-Extension bietet sie vollständigen Zugriff auf alle Hardware-Komponenten einschließlich analoger/digitaler I/O-Pins, PWM-Ausgänge und erweiterte Sensordaten.</p>
 
-            <p><strong>💡 Welcher Browser funktioniert?</strong><br>
-            <strong>Empfohlen:</strong> Chrome oder Edge - diese unterstützen Bluetooth direkt und funktionieren am besten.<br>
-            <strong>Nicht geeignet:</strong> Firefox und Safari unterstützen leider kein Web-Bluetooth.</p>
+            <p><strong>Hardware-Vorbereitung</strong><br>
+            Vor der Verwendung muss die micro:bit-Firmware installiert werden. Die erforderliche Hex-Datei ist verfügbar unter: <a href="https://github.com/microbit-more/pxt-mbit-more-v2/releases/download/0.2.5/microbit-mbit-more-v2-0_2_5.hex" target="_blank" style="color: #667eea;">microbit-mbit-more-v2-0_2_5.hex</a><br>
+            Die Datei wird via USB-Massenspeicher-Modus auf das Gerät übertragen (einmalige Prozedur).</p>
+
+            <p><strong>Browser-Kompatibilität</strong><br>
+            Die Kommunikation mit dem micro:bit erfolgt über die <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API" target="_blank" style="color: #667eea;"><strong>Web Bluetooth API</strong></a>. Diese wird derzeit von Chromium-basierten Browsern (Chrome, Edge) unterstützt. Firefox und Safari bieten keine Web-Bluetooth-Unterstützung.</p>
         </div>
 
         <div class="footer">
