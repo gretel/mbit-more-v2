@@ -1,6 +1,8 @@
 import BLE from './ble';
 import WebSerial from './serial-web';
 
+import log from '../../util/log';
+
 const uint8ArrayToBase64 = array => window.btoa(String.fromCharCode(...array));
 const base64ToUint8Array = base64 => {
     const raw = window.atob(base64);
