@@ -12,5 +12,8 @@
   "devDependencies": {
     "xcratch-build": "^0.5.0",
     "xcratch-register": "^0.4.2"
+  },
+  "dependencies": {
+    "pxt-microbit": "^8.1.6"
   }
 }

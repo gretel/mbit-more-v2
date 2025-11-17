@@ -1100,18 +1100,32 @@ export class MicrobitMore {
                 this._ble.startNotifications(
                     MM_SERVICE.ID,
                     MM_SERVICE.ACTION_EVENT_CH,
-                    this.onNotify);
+                    this.onNotify)
+                    .catch(err => {
+                        log.error(`Failed to start notifications on ACTION_EVENT_CH: ${err}`);
+                    });
                 this._ble.startNotifications(
                     MM_SERVICE.ID,
                     MM_SERVICE.PIN_EVENT_CH,
-                    this.onNotify);
+                    this.onNotify)
+                    .catch(err => {
+                        log.error(`Failed to start notifications on PIN_EVENT_CH: ${err}`);
+                    });
                 if (this.hardware === MbitMoreHardwareVersion.MICROBIT_V1) {
                     this.microbitUpdateInterval = 100; // milliseconds
                 } else {
+                    log.debug(`Attempting to start notifications on MESSAGE_CH for V2 hardware...`);
                     this._ble.startNotifications(
                         MM_SERVICE.ID,
                         MM_SERVICE.MESSAGE_CH,
-                        this.onNotify);
+                        this.onNotify)
+                        .then(() => {
+                            log.debug(`MESSAGE_CH notifications started successfully`);
+                        })
+                        .catch(err => {
+                            log.error(`Failed to start notifications on MESSAGE_CH (data exchange will not work): ${err}`);
+                            log.error(`Make sure your MakeCode firmware includes MESSAGE_CH characteristic with NOTIFY support`);
+                        });
                     this.microbitUpdateInterval = 50; // milliseconds
                 }
                 if (this.route === CommunicationRoute.SERIAL) {
@@ -1136,6 +1150,7 @@ export class MicrobitMore {
         const data = base64ToUint8Array(msg);
         const dataView = new DataView(data.buffer, 0);
         const dataFormat = dataView.getUint8(19);
+        log.debug(`[DATA RECV] format=0x${dataFormat.toString(16)} rawData=[${Array.from(data).map(b => '0x' + b.toString(16).padStart(2, '0')).join(', ')}]`);
         if (dataFormat === MbitMoreDataFormat.ACTION_EVENT) {
             const actionEventType = dataView.getUint8(0);
             if (actionEventType === MbitMoreActionEvent.BUTTON) {
@@ -1159,16 +1174,20 @@ export class MicrobitMore {
             };
         } else if (dataFormat === MbitMoreDataFormat.DATA_NUMBER) {
             const label = new TextDecoder().decode(data.slice(0, 8).filter(char => (char !== 0)));
+            const content = dataView.getFloat32(8, true);
+            log.debug(`[DATA RECV NUMBER] label="${label}" content=${content}`);
             this.receivedData[label] =
             {
-                content: dataView.getFloat32(8, true),
+                content: content,
                 timestamp: Date.now()
             };
         } else if (dataFormat === MbitMoreDataFormat.DATA_TEXT) {
             const label = new TextDecoder().decode(data.slice(0, 8).filter(char => (char !== 0)));
+            const content = new TextDecoder().decode(data.slice(8, 20).filter(char => (char !== 0)));
+            log.debug(`[DATA RECV TEXT] label="${label}" content="${content}"`);
             this.receivedData[label] =
             {
-                content: new TextDecoder().decode(data.slice(8, 20).filter(char => (char !== 0))),
+                content: content,
                 timestamp: Date.now()
             };
         }
@@ -1351,7 +1370,7 @@ export class MicrobitMore {
     sendData (label, content, util) {
         const labelData = new Array(8)
             .fill()
-            .map((_value, index) => label.charCodeAt(index));
+            .map((_value, index) => label.charCodeAt(index) || 0);
         const contentNumber = Number(content);
         let contentData;
         let type;
@@ -1372,12 +1391,16 @@ export class MicrobitMore {
                 dataView.getUint8(3)
             ];
         }
+        const cmdId = ((BLECommand.CMD_DATA << 5) | type);
+        const message = new Uint8Array([
+            ...labelData,
+            ...contentData
+        ]);
+        log.debug(`[DATA SEND] label="${label}" content="${content}" type=${type} cmdId=0x${cmdId.toString(16)} message=[${Array.from(message).map(b => '0x' + b.toString(16).padStart(2, '0')).join(', ')}]`);
         return this.sendCommandSet(
             [{
-                id: ((BLECommand.CMD_DATA << 5) | type),
-                message: new Uint8Array([
-                    ...labelData,
-                    ...contentData])
+                id: cmdId,
+                message: message
             }],
             util);
     }

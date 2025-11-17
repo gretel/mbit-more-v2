@@ -74,86 +74,100 @@ var entry = {
   translationMap: translations$1
 };
 
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
+function _arrayWithHoles(r) {
+  if (Array.isArray(r)) return r;
 }
 
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = !0,
+      o = !1;
     try {
-      if (!_n && _i["return"] != null) _i["return"]();
+      if (i = (t = t.call(r)).next, 0 === l) {
+        if (Object(t) !== t) return;
+        f = !1;
+      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+    } catch (r) {
+      o = !0, n = r;
     } finally {
-      if (_d) throw _e;
+      try {
+        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
+      }
     }
+    return a;
   }
-  return _arr;
 }
 
-function _arrayLikeToArray$1(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
+function _arrayLikeToArray(r, a) {
+  (null == a || a > r.length) && (a = r.length);
+  for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+  return n;
 }
 
-function _unsupportedIterableToArray$1(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray$1(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen);
+function _unsupportedIterableToArray(r, a) {
+  if (r) {
+    if ("string" == typeof r) return _arrayLikeToArray(r, a);
+    var t = {}.toString.call(r).slice(8, -1);
+    return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+  }
 }
 
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray$1(arr, i) || _nonIterableRest();
+function _slicedToArray(r, e) {
+  return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
 }
 
-function _classCallCheck$1(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
+function _classCallCheck(a, n) {
+  if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function");
+}
+
+function _typeof$1(o) {
+  "@babel/helpers - typeof";
+
+  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, _typeof$1(o);
+}
+
+function toPrimitive(t, r) {
+  if ("object" != _typeof$1(t) || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof$1(i)) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return ("string" === r ? String : Number)(t);
+}
+
+function toPropertyKey(t) {
+  var i = toPrimitive(t, "string");
+  return "symbol" == _typeof$1(i) ? i : i + "";
+}
+
+function _defineProperties(e, r) {
+  for (var t = 0; t < r.length; t++) {
+    var o = r[t];
+    o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, toPropertyKey(o.key), o);
   }
 }
-
-function _defineProperties$1(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-function _createClass$1(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties$1(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties$1(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-
-function getDefaultExportFromCjs (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+function _createClass(e, r, t) {
+  return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", {
+    writable: !1
+  }), e;
 }
 
 /**
@@ -195,7 +209,6 @@ var ArgumentType = {
   IMAGE: 'image'
 };
 var argumentType = ArgumentType;
-var ArgumentType$1 = /*@__PURE__*/getDefaultExportFromCjs(argumentType);
 
 /**
  * Types of block
@@ -239,34 +252,12 @@ var BlockType = {
   REPORTER: 'reporter'
 };
 var blockType = BlockType;
-var BlockType$1 = /*@__PURE__*/getDefaultExportFromCjs(blockType);
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
 
 var Color$1 = /*#__PURE__*/function () {
   function Color() {
     _classCallCheck(this, Color);
   }
-  _createClass(Color, null, [{
+  return _createClass(Color, null, [{
     key: "RGB_BLACK",
     get:
     /**
@@ -504,7 +495,6 @@ var Color$1 = /*#__PURE__*/function () {
       };
     }
   }]);
-  return Color;
 }();
 var color$3 = Color$1;
 
@@ -524,7 +514,7 @@ var Cast = /*#__PURE__*/function () {
   function Cast() {
     _classCallCheck(this, Cast);
   }
-  _createClass(Cast, null, [{
+  return _createClass(Cast, null, [{
     key: "toNumber",
     value:
     /**
@@ -544,6 +534,13 @@ var Cast = /*#__PURE__*/function () {
           return 0;
         }
         return value;
+      }
+      if (typeof value === 'string') {
+        // Replace full-width numbers with half-width ones.
+        value = value.replace(/[０-９＋．ｅ]/g, function (s) {
+          return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+        });
+        value = value.replace(/[-－﹣−‐⁃‑‒–—﹘―⎯⏤ーｰ─━]/g, '-');
       }
       var n = Number(value);
       if (Number.isNaN(n)) {
@@ -588,7 +585,7 @@ var Cast = /*#__PURE__*/function () {
   }, {
     key: "toString",
     value: function toString(value) {
-      return String(value);
+      return String(value).replace(/\\n/g, '\n').replace(/\\t/g, '\t');
     }
 
     /**
@@ -659,8 +656,8 @@ var Cast = /*#__PURE__*/function () {
       if (isNaN(n1) || isNaN(n2)) {
         // At least one argument can't be converted to a number.
         // Scratch compares strings as case insensitive.
-        var s1 = String(v1).toLowerCase();
-        var s2 = String(v2).toLowerCase();
+        var s1 = Cast.toString(v1).toLowerCase();
+        var s2 = Cast.toString(v2).toLowerCase();
         if (s1 < s2) {
           return -1;
         } else if (s1 > s2) {
@@ -748,10 +745,8 @@ var Cast = /*#__PURE__*/function () {
       return index;
     }
   }]);
-  return Cast;
 }();
 var cast = Cast;
-var Cast$1 = /*@__PURE__*/getDefaultExportFromCjs(cast);
 
 var img = "data:image/png;base64,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";
 
@@ -1051,78 +1046,56 @@ var translations = {
 	pt: pt
 };
 
-function _arrayWithoutHoles$1(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray$1(arr);
+function _arrayWithoutHoles(r) {
+  if (Array.isArray(r)) return _arrayLikeToArray(r);
 }
 
-function _iterableToArray$1(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+function _iterableToArray(r) {
+  if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r);
 }
 
-function _nonIterableSpread$1() {
+function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-function _toConsumableArray$1(arr) {
-  return _arrayWithoutHoles$1(arr) || _iterableToArray$1(arr) || _unsupportedIterableToArray$1(arr) || _nonIterableSpread$1();
+function _toConsumableArray(r) {
+  return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread();
 }
 
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
+function _assertThisInitialized(e) {
+  if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  return e;
 }
 
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf(o, p);
+function _possibleConstructorReturn(t, e) {
+  if (e && ("object" == _typeof$1(e) || "function" == typeof e)) return e;
+  if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined");
+  return _assertThisInitialized(t);
 }
 
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
+function _getPrototypeOf(t) {
+  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) {
+    return t.__proto__ || Object.getPrototypeOf(t);
+  }, _getPrototypeOf(t);
+}
+
+function _setPrototypeOf(t, e) {
+  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) {
+    return t.__proto__ = e, t;
+  }, _setPrototypeOf(t, e);
+}
+
+function _inherits(t, e) {
+  if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function");
+  t.prototype = Object.create(e && e.prototype, {
     constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
+      value: t,
+      writable: !0,
+      configurable: !0
     }
-  });
-  if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _typeof$1(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof$1 = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof$1 = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-  return _typeof$1(obj);
-}
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof$1(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-  return _assertThisInitialized(self);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
+  }), Object.defineProperty(t, "prototype", {
+    writable: !1
+  }), e && _setPrototypeOf(t, e);
 }
 
 var JSONRPC$1 = /*#__PURE__*/function () {
@@ -1138,7 +1111,7 @@ var JSONRPC$1 = /*#__PURE__*/function () {
    * @param {object} params - the parameters to pass to the remote method.
    * @returns {Promise} - a promise for the result of the call.
    */
-  _createClass(JSONRPC, [{
+  return _createClass(JSONRPC, [{
     key: "sendRemoteRequest",
     value: function sendRemoteRequest(method, params) {
       var _this = this;
@@ -1171,13 +1144,13 @@ var JSONRPC$1 = /*#__PURE__*/function () {
      */
   }, {
     key: "didReceiveCall",
-    value: function didReceiveCall( /* method , params */
+    value: function didReceiveCall(/* method , params */
     ) {
       throw new Error('Must override didReceiveCall');
     }
   }, {
     key: "_sendMessage",
-    value: function _sendMessage( /* jsonMessageObject */
+    value: function _sendMessage(/* jsonMessageObject */
     ) {
       throw new Error('Must override _sendMessage');
     }
@@ -1200,7 +1173,7 @@ var JSONRPC$1 = /*#__PURE__*/function () {
       if (json.jsonrpc !== '2.0') {
         throw new Error("Bad or missing JSON-RPC version in message: ".concat(json));
       }
-      if (json.hasOwnProperty('method')) {
+      if (Object.prototype.hasOwnProperty.call(json, 'method')) {
         this._handleRequest(json);
       } else {
         this._handleResponse(json);
@@ -1244,7 +1217,7 @@ var JSONRPC$1 = /*#__PURE__*/function () {
         params = json.params,
         id = json.id;
       var rawResult = this.didReceiveCall(method, params);
-      if (id) {
+      if (id !== null && typeof id !== 'undefined') {
         Promise.resolve(rawResult).then(function (result) {
           _this2._sendResponse(id, result);
         }, function (error) {
@@ -1253,42 +1226,8 @@ var JSONRPC$1 = /*#__PURE__*/function () {
       }
     }
   }]);
-  return JSONRPC;
 }();
 var jsonrpc = JSONRPC$1;
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
 
 var web = {exports: {}};
 
@@ -1359,8 +1298,8 @@ var microee$1 = M;
 var microee = microee$1;
 
 // Implements a subset of Node's stream.Transform - in a cross-platform manner.
-function Transform$4() {}
-microee.mixin(Transform$4);
+function Transform$7() {}
+microee.mixin(Transform$7);
 
 // The write() signature is different from Node's
 // --> makes it much easier to work with objects in logs.
@@ -1368,14 +1307,14 @@ microee.mixin(Transform$4);
 // a good browser rather than the lowest common denominator
 // internally.
 // If you want to use external streams, pipe() to ./stringify.js first.
-Transform$4.prototype.write = function (name, level, args) {
+Transform$7.prototype.write = function (name, level, args) {
   this.emit('item', name, level, args);
 };
-Transform$4.prototype.end = function () {
+Transform$7.prototype.end = function () {
   this.emit('end');
   this.removeAllListeners();
 };
-Transform$4.prototype.pipe = function (dest) {
+Transform$7.prototype.pipe = function (dest) {
   var s = this;
   // prevent double piping
   s.emit('unpipe', dest);
@@ -1400,24 +1339,24 @@ Transform$4.prototype.pipe = function (dest) {
   });
   return dest;
 };
-Transform$4.prototype.unpipe = function (from) {
+Transform$7.prototype.unpipe = function (from) {
   this.emit('unpipe', from);
   return this;
 };
-Transform$4.prototype.format = function (dest) {
+Transform$7.prototype.format = function (dest) {
   throw new Error(['Warning: .format() is deprecated in Minilog v2! Use .pipe() instead. For example:', 'var Minilog = require(\'minilog\');', 'Minilog', '  .pipe(Minilog.backends.console.formatClean)', '  .pipe(Minilog.backends.console);'].join('\n'));
 };
-Transform$4.mixin = function (dest) {
-  var o = Transform$4.prototype,
+Transform$7.mixin = function (dest) {
+  var o = Transform$7.prototype,
     k;
   for (k in o) {
     o.hasOwnProperty(k) && (dest.prototype[k] = o[k]);
   }
 };
-var transform = Transform$4;
+var transform = Transform$7;
 
 // default filter
-var Transform$3 = transform;
+var Transform$6 = transform;
 var levelMap = {
   debug: 1,
   info: 2,
@@ -1429,7 +1368,7 @@ function Filter() {
   this.defaultResult = true;
   this.clear();
 }
-Transform$3.mixin(Filter);
+Transform$6.mixin(Filter);
 
 // allow all matching, with level >= given level
 Filter.prototype.allow = function (name, level) {
@@ -1483,30 +1422,30 @@ var filter = Filter;
   var log = new Transform(),
     slice = Array.prototype.slice;
   exports = module.exports = function create(name) {
-    var o = function o() {
+    var _o = function o() {
       log.write(name, undefined, slice.call(arguments));
-      return o;
+      return _o;
     };
-    o.debug = function () {
+    _o.debug = function () {
       log.write(name, 'debug', slice.call(arguments));
-      return o;
+      return _o;
     };
-    o.info = function () {
+    _o.info = function () {
       log.write(name, 'info', slice.call(arguments));
-      return o;
+      return _o;
     };
-    o.warn = function () {
+    _o.warn = function () {
       log.write(name, 'warn', slice.call(arguments));
-      return o;
+      return _o;
     };
-    o.error = function () {
+    _o.error = function () {
       log.write(name, 'error', slice.call(arguments));
-      return o;
+      return _o;
     };
-    o.log = o.debug; // for interface compliance with Node and browser consoles
-    o.suggest = exports.suggest;
-    o.format = log.format;
-    return o;
+    _o.log = _o.debug; // for interface compliance with Node and browser consoles
+    _o.suggest = exports.suggest;
+    _o.format = log.format;
+    return _o;
   };
 
   // filled in separately
@@ -1532,7 +1471,6 @@ var filter = Filter;
     .pipe(exports.defaultBackend); // formatter
   };
 })(minilog$2, minilog$2.exports);
-var minilogExports = minilog$2.exports;
 
 var hex = {
   black: '#000',
@@ -1554,7 +1492,7 @@ function color$2(fg, isInverse) {
 }
 var util = color$2;
 
-var Transform$2 = transform,
+var Transform$5 = transform,
   color$1 = util;
 var colors$1 = {
     debug: ['cyan'],
@@ -1562,8 +1500,8 @@ var colors$1 = {
     warn: ['yellow', true],
     error: ['red', true]
   },
-  logger$2 = new Transform$2();
-logger$2.write = function (name, level, args) {
+  logger$4 = new Transform$5();
+logger$4.write = function (name, level, args) {
   var fn = console.log;
   if (console[level] && console[level].apply) {
     fn = console[level];
@@ -1572,10 +1510,10 @@ logger$2.write = function (name, level, args) {
 };
 
 // NOP, because piping the formatted logs can only cause trouble.
-logger$2.pipe = function () {};
-var color_1 = logger$2;
+logger$4.pipe = function () {};
+var color_1 = logger$4;
 
-var Transform$1 = transform,
+var Transform$4 = transform,
   color = util,
   colors = {
     debug: ['gray'],
@@ -1583,8 +1521,8 @@ var Transform$1 = transform,
     warn: ['yellow', true],
     error: ['red', true]
   },
-  logger$1 = new Transform$1();
-logger$1.write = function (name, level, args) {
+  logger$3 = new Transform$4();
+logger$3.write = function (name, level, args) {
   var fn = console.log;
   if (level != 'debug' && console[level]) {
     fn = console[level];
@@ -1601,13 +1539,13 @@ logger$1.write = function (name, level, args) {
 };
 
 // NOP, because piping the formatted logs can only cause trouble.
-logger$1.pipe = function () {};
-var minilog$1 = logger$1;
+logger$3.pipe = function () {};
+var minilog$1 = logger$3;
 
-var Transform = transform;
+var Transform$3 = transform;
 var newlines = /\n+$/,
-  logger = new Transform();
-logger.write = function (name, level, args) {
+  logger$2 = new Transform$3();
+logger$2.write = function (name, level, args) {
   var i = args.length - 1;
   if (typeof console === 'undefined' || !console.log) {
     return;
@@ -1628,143 +1566,122 @@ logger.write = function (name, level, args) {
     console.log(args.join(' '));
   }
 };
-logger.formatters = ['color', 'minilog'];
-logger.color = color_1;
-logger.minilog = minilog$1;
-var console_1 = logger;
+logger$2.formatters = ['color', 'minilog'];
+logger$2.color = color_1;
+logger$2.minilog = minilog$1;
+var console_1 = logger$2;
 
-var array;
-var hasRequiredArray;
-function requireArray() {
-  if (hasRequiredArray) return array;
-  hasRequiredArray = 1;
-  var Transform = transform,
-    cache = [];
-  var logger = new Transform();
-  logger.write = function (name, level, args) {
-    cache.push([name, level, args]);
-  };
+var Transform$2 = transform,
+  cache$1 = [];
+var logger$1 = new Transform$2();
+logger$1.write = function (name, level, args) {
+  cache$1.push([name, level, args]);
+};
 
-  // utility functions
-  logger.get = function () {
-    return cache;
-  };
-  logger.empty = function () {
-    cache = [];
-  };
-  array = logger;
-  return array;
+// utility functions
+logger$1.get = function () {
+  return cache$1;
+};
+logger$1.empty = function () {
+  cache$1 = [];
+};
+var array = logger$1;
+
+var Transform$1 = transform,
+  cache = false;
+var logger = new Transform$1();
+logger.write = function (name, level, args) {
+  if (typeof window == 'undefined' || typeof JSON == 'undefined' || !JSON.stringify || !JSON.parse) return;
+  try {
+    if (!cache) {
+      cache = window.localStorage.minilog ? JSON.parse(window.localStorage.minilog) : [];
+    }
+    cache.push([new Date().toString(), name, level, args]);
+    window.localStorage.minilog = JSON.stringify(cache);
+  } catch (e) {}
+};
+var localstorage = logger;
+
+var Transform = transform;
+var cid = new Date().valueOf().toString(36);
+function AjaxLogger(options) {
+  this.url = options.url || '';
+  this.cache = [];
+  this.timer = null;
+  this.interval = options.interval || 30 * 1000;
+  this.enabled = true;
+  this.jQuery = window.jQuery;
+  this.extras = {};
 }
-
-var localstorage;
-var hasRequiredLocalstorage;
-function requireLocalstorage() {
-  if (hasRequiredLocalstorage) return localstorage;
-  hasRequiredLocalstorage = 1;
-  var Transform = transform,
-    cache = false;
-  var logger = new Transform();
-  logger.write = function (name, level, args) {
-    if (typeof window == 'undefined' || typeof JSON == 'undefined' || !JSON.stringify || !JSON.parse) return;
-    try {
-      if (!cache) {
-        cache = window.localStorage.minilog ? JSON.parse(window.localStorage.minilog) : [];
-      }
-      cache.push([new Date().toString(), name, level, args]);
-      window.localStorage.minilog = JSON.stringify(cache);
-    } catch (e) {}
-  };
-  localstorage = logger;
-  return localstorage;
-}
-
-var jquery_simple;
-var hasRequiredJquery_simple;
-function requireJquery_simple() {
-  if (hasRequiredJquery_simple) return jquery_simple;
-  hasRequiredJquery_simple = 1;
-  var Transform = transform;
-  var cid = new Date().valueOf().toString(36);
-  function AjaxLogger(options) {
-    this.url = options.url || '';
-    this.cache = [];
-    this.timer = null;
-    this.interval = options.interval || 30 * 1000;
-    this.enabled = true;
-    this.jQuery = window.jQuery;
-    this.extras = {};
+Transform.mixin(AjaxLogger);
+AjaxLogger.prototype.write = function (name, level, args) {
+  if (!this.timer) {
+    this.init();
   }
-  Transform.mixin(AjaxLogger);
-  AjaxLogger.prototype.write = function (name, level, args) {
-    if (!this.timer) {
-      this.init();
+  this.cache.push([name, level].concat(args));
+};
+AjaxLogger.prototype.init = function () {
+  if (!this.enabled || !this.jQuery) return;
+  var self = this;
+  this.timer = setTimeout(function () {
+    var i,
+      logs = [],
+      ajaxData,
+      url = self.url;
+    if (self.cache.length == 0) return self.init();
+    // Test each log line and only log the ones that are valid (e.g. don't have circular references).
+    // Slight performance hit but benefit is we log all valid lines.
+    for (i = 0; i < self.cache.length; i++) {
+      try {
+        JSON.stringify(self.cache[i]);
+        logs.push(self.cache[i]);
+      } catch (e) {}
     }
-    this.cache.push([name, level].concat(args));
-  };
-  AjaxLogger.prototype.init = function () {
-    if (!this.enabled || !this.jQuery) return;
-    var self = this;
-    this.timer = setTimeout(function () {
-      var i,
-        logs = [],
-        ajaxData,
-        url = self.url;
-      if (self.cache.length == 0) return self.init();
-      // Test each log line and only log the ones that are valid (e.g. don't have circular references).
-      // Slight performance hit but benefit is we log all valid lines.
-      for (i = 0; i < self.cache.length; i++) {
-        try {
-          JSON.stringify(self.cache[i]);
-          logs.push(self.cache[i]);
-        } catch (e) {}
-      }
-      if (self.jQuery.isEmptyObject(self.extras)) {
-        ajaxData = JSON.stringify({
-          logs: logs
-        });
-        url = self.url + '?client_id=' + cid;
-      } else {
-        ajaxData = JSON.stringify(self.jQuery.extend({
-          logs: logs
-        }, self.extras));
-      }
-      self.jQuery.ajax(url, {
-        type: 'POST',
-        cache: false,
-        processData: false,
-        data: ajaxData,
-        contentType: 'application/json',
-        timeout: 10000
-      }).success(function (data, status, jqxhr) {
-        if (data.interval) {
-          self.interval = Math.max(1000, data.interval);
-        }
-      }).error(function () {
-        self.interval = 30000;
-      }).always(function () {
-        self.init();
+    if (self.jQuery.isEmptyObject(self.extras)) {
+      ajaxData = JSON.stringify({
+        logs: logs
       });
-      self.cache = [];
-    }, this.interval);
-  };
-  AjaxLogger.prototype.end = function () {};
-
-  // wait until jQuery is defined. Useful if you don't control the load order.
-  AjaxLogger.jQueryWait = function (onDone) {
-    if (typeof window !== 'undefined' && (window.jQuery || window.$)) {
-      return onDone(window.jQuery || window.$);
-    } else if (typeof window !== 'undefined') {
-      setTimeout(function () {
-        AjaxLogger.jQueryWait(onDone);
-      }, 200);
+      url = self.url + '?client_id=' + cid;
+    } else {
+      ajaxData = JSON.stringify(self.jQuery.extend({
+        logs: logs
+      }, self.extras));
     }
-  };
-  jquery_simple = AjaxLogger;
-  return jquery_simple;
-}
+    self.jQuery.ajax(url, {
+      type: 'POST',
+      cache: false,
+      processData: false,
+      data: ajaxData,
+      contentType: 'application/json',
+      timeout: 10000
+    }).success(function (data, status, jqxhr) {
+      if (data.interval) {
+        self.interval = Math.max(1000, data.interval);
+      }
+    }).error(function () {
+      self.interval = 30000;
+    }).always(function () {
+      self.init();
+    });
+    self.cache = [];
+  }, this.interval);
+};
+AjaxLogger.prototype.end = function () {};
+
+// wait until jQuery is defined. Useful if you don't control the load order.
+AjaxLogger.jQueryWait = function (onDone) {
+  if (typeof window !== 'undefined' && (window.jQuery || window.$)) {
+    return onDone(window.jQuery || window.$);
+  } else if (typeof window !== 'undefined') {
+    setTimeout(function () {
+      AjaxLogger.jQueryWait(onDone);
+    }, 200);
+  }
+};
+var jquery_simple = AjaxLogger;
 
 (function (module, exports) {
-  var Minilog = minilogExports;
+  var Minilog = minilog$2.exports;
   var oldEnable = Minilog.enable,
     oldDisable = Minilog.disable,
     isChrome = typeof navigator != 'undefined' && /chrome/i.test(navigator.userAgent),
@@ -1801,19 +1718,18 @@ function requireJquery_simple() {
   };
   exports = module.exports = Minilog;
   exports.backends = {
-    array: requireArray(),
+    array: array,
     browser: Minilog.defaultBackend,
-    localStorage: requireLocalstorage(),
-    jQuery: requireJquery_simple()
+    localStorage: localstorage,
+    jQuery: jquery_simple
   };
 })(web, web.exports);
-var webExports = web.exports;
 
-var minilog = webExports;
+var minilog = web.exports;
 minilog.enable();
-var log$2 = minilog('vm');
+var log$3 = minilog('vm');
 
-var log$1 = log$2;
+var log$2 = log$3;
 var uint8ArrayToBase64$2 = function uint8ArrayToBase64(array) {
   return window.btoa(String.fromCharCode.apply(String, _toConsumableArray(array)));
 };
@@ -1861,7 +1777,7 @@ var WebBLE$1 = /*#__PURE__*/function () {
    * Request connection to the peripheral.
    * Request user to choose a device, and then connect it automatically.
    */
-  _createClass(WebBLE, [{
+  return _createClass(WebBLE, [{
     key: "requestPeripheral",
     value: function requestPeripheral() {
       var _this = this;
@@ -1870,7 +1786,7 @@ var WebBLE$1 = /*#__PURE__*/function () {
       }
       navigator.bluetooth.requestDevice(this._peripheralOptions).then(function (device) {
         _this._device = device;
-        log$1.debug("device=".concat(_this._device.name));
+        log$2.debug("device=".concat(_this._device.name));
         _this._runtime.connectPeripheral(_this._extensionId, _this._device.id);
       }).catch(function (e) {
         _this._handleRequestError(e);
@@ -1883,14 +1799,14 @@ var WebBLE$1 = /*#__PURE__*/function () {
      */
   }, {
     key: "connectPeripheral",
-    value: function connectPeripheral( /* id */
+    value: function connectPeripheral(/* id */
     ) {
       var _this2 = this;
       if (!this._device) {
         throw new Error('device is not chosen');
       }
       this._device.gatt.connect().then(function (gattServer) {
-        log$1.debug("GATTServer is connected");
+        log$2.debug("GATTServer is connected");
         _this2._server = gattServer;
         _this2._runtime.emit(_this2._runtime.constructor.PERIPHERAL_CONNECTED);
         _this2._disconnected = false;
@@ -1945,7 +1861,7 @@ var WebBLE$1 = /*#__PURE__*/function () {
           var dataView = event.target.value;
           onCharacteristicChanged(uint8ArrayToBase64$2(new Uint8Array(dataView.buffer)));
         });
-        characteristic.startNotifications();
+        return characteristic.startNotifications();
       });
     }
 
@@ -1968,7 +1884,9 @@ var WebBLE$1 = /*#__PURE__*/function () {
         return service.getCharacteristic(characteristicId);
       }).then(function (characteristic) {
         if (optStartNotifications) {
-          _this3.startNotifications(serviceId, characteristicId, onCharacteristicChanged);
+          return _this3.startNotifications(serviceId, characteristicId, onCharacteristicChanged).then(function () {
+            return characteristic.readValue();
+          });
         }
         return characteristic.readValue();
       }).then(function (dataView) {
@@ -2020,7 +1938,7 @@ var WebBLE$1 = /*#__PURE__*/function () {
      */
   }, {
     key: "handleDisconnectError",
-    value: function handleDisconnectError( /* e */
+    value: function handleDisconnectError(/* e */
     ) {
       // log.error(`BLE error: ${JSON.stringify(e)}`);
 
@@ -2036,7 +1954,7 @@ var WebBLE$1 = /*#__PURE__*/function () {
     }
   }, {
     key: "_handleRequestError",
-    value: function _handleRequestError( /* e */
+    value: function _handleRequestError(/* e */
     ) {
       // log.error(`BLE error: ${JSON.stringify(e)}`);
 
@@ -2051,22 +1969,19 @@ var WebBLE$1 = /*#__PURE__*/function () {
      */
   }, {
     key: "onDisconnected",
-    value: function onDisconnected( /* event */
+    value: function onDisconnected(/* event */
     ) {
       this.handleDisconnectError(new Error('device disconnected'));
     }
   }]);
-  return WebBLE;
 }();
 var bleWeb = WebBLE$1;
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
 var JSONRPC = jsonrpc;
 var WebBLE = bleWeb;
-var BLE$2 = /*#__PURE__*/function (_JSONRPC) {
-  _inherits(BLE, _JSONRPC);
-  var _super = _createSuper(BLE);
+var BLE$1 = /*#__PURE__*/function (_JSONRPC) {
   /**
    * A BLE peripheral socket object.  It handles connecting, over web sockets, to
    * BLE peripherals, and reading and writing data to them.
@@ -2080,12 +1995,12 @@ var BLE$2 = /*#__PURE__*/function (_JSONRPC) {
     var _this;
     var resetCallback = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
     _classCallCheck(this, BLE);
-    _this = _super.call(this);
+    _this = _callSuper(this, BLE);
     _this._socket = runtime.getScratchLinkSocket('BLE');
-    _this._socket.setOnOpen(_this.requestPeripheral.bind(_assertThisInitialized(_this)));
-    _this._socket.setOnClose(_this.handleDisconnectError.bind(_assertThisInitialized(_this)));
-    _this._socket.setOnError(_this._handleRequestError.bind(_assertThisInitialized(_this)));
-    _this._socket.setHandleMessage(_this._handleMessage.bind(_assertThisInitialized(_this)));
+    _this._socket.setOnOpen(_this.requestPeripheral.bind(_this));
+    _this._socket.setOnClose(_this.handleDisconnectError.bind(_this));
+    _this._socket.setOnError(_this._handleRequestError.bind(_this));
+    _this._socket.setHandleMessage(_this._handleMessage.bind(_this));
     _this._sendMessage = _this._socket.sendMessage.bind(_this._socket);
     _this._availablePeripherals = {};
     _this._connectCallback = connectCallback;
@@ -2104,7 +2019,8 @@ var BLE$2 = /*#__PURE__*/function (_JSONRPC) {
    * Request connection to the peripheral.
    * If the web socket is not yet open, request when the socket promise resolves.
    */
-  _createClass(BLE, [{
+  _inherits(BLE, _JSONRPC);
+  return _createClass(BLE, [{
     key: "requestPeripheral",
     value: function requestPeripheral() {
       var _this2 = this;
@@ -2302,7 +2218,7 @@ var BLE$2 = /*#__PURE__*/function (_JSONRPC) {
      */
   }, {
     key: "handleDisconnectError",
-    value: function handleDisconnectError( /* e */
+    value: function handleDisconnectError(/* e */
     ) {
       // log.error(`BLE error: ${JSON.stringify(e)}`);
 
@@ -2318,7 +2234,7 @@ var BLE$2 = /*#__PURE__*/function (_JSONRPC) {
     }
   }, {
     key: "_handleRequestError",
-    value: function _handleRequestError( /* e */
+    value: function _handleRequestError(/* e */
     ) {
       // log.error(`BLE error: ${JSON.stringify(e)}`);
 
@@ -2336,711 +2252,384 @@ var BLE$2 = /*#__PURE__*/function (_JSONRPC) {
       this._runtime.emit(this._runtime.constructor.PERIPHERAL_SCAN_TIMEOUT);
     }
   }]);
-  return BLE;
 }(JSONRPC);
-var ble$1 = navigator.bluetooth ? WebBLE : BLE$2;
+var ble$1 = navigator.bluetooth ? WebBLE : BLE$1;
 
 var BLE = ble$1;
 var ble = BLE;
-var BLE$1 = /*@__PURE__*/getDefaultExportFromCjs(ble);
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+function asyncGeneratorStep(n, t, e, r, o, a, c) {
   try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
+    var i = n[a](c),
+      u = i.value;
+  } catch (n) {
+    return void e(n);
   }
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
+  i.done ? t(u) : Promise.resolve(u).then(r, o);
 }
-function _asyncToGenerator(fn) {
+function _asyncToGenerator(n) {
   return function () {
-    var self = this,
-      args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+    var t = this,
+      e = arguments;
+    return new Promise(function (r, o) {
+      var a = n.apply(t, e);
+      function _next(n) {
+        asyncGeneratorStep(a, r, o, _next, _throw, "next", n);
       }
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      function _throw(n) {
+        asyncGeneratorStep(a, r, o, _next, _throw, "throw", n);
       }
-      _next(undefined);
+      _next(void 0);
     });
   };
 }
 
-function _typeof(obj) {
-  "@babel/helpers - typeof";
+var regeneratorRuntime$1 = {exports: {}};
 
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof(obj);
-}
-
-var runtime = {exports: {}};
+var OverloadYield = {exports: {}};
 
 (function (module) {
-  var runtime = function (exports) {
+  function _OverloadYield(e, d) {
+    this.v = e, this.k = d;
+  }
+  module.exports = _OverloadYield, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(OverloadYield);
 
-    var Op = Object.prototype;
-    var hasOwn = Op.hasOwnProperty;
-    var undefined$1; // More compressible than void 0.
-    var $Symbol = typeof Symbol === "function" ? Symbol : {};
-    var iteratorSymbol = $Symbol.iterator || "@@iterator";
-    var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
-    var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-    function define(obj, key, value) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-      return obj[key];
-    }
+var regenerator$1 = {exports: {}};
+
+var regeneratorDefine = {exports: {}};
+
+(function (module) {
+  function _regeneratorDefine(e, r, n, t) {
+    var i = Object.defineProperty;
     try {
-      // IE 8 has a broken Object.defineProperty that only works on DOM objects.
-      define({}, "");
-    } catch (err) {
-      define = function define(obj, key, value) {
-        return obj[key] = value;
-      };
+      i({}, "", {});
+    } catch (e) {
+      i = 0;
     }
-    function wrap(innerFn, outerFn, self, tryLocsList) {
-      // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-      var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-      var generator = Object.create(protoGenerator.prototype);
-      var context = new Context(tryLocsList || []);
-
-      // The ._invoke method unifies the implementations of the .next,
-      // .throw, and .return methods.
-      generator._invoke = makeInvokeMethod(innerFn, self, context);
-      return generator;
-    }
-    exports.wrap = wrap;
-
-    // Try/catch helper to minimize deoptimizations. Returns a completion
-    // record like context.tryEntries[i].completion. This interface could
-    // have been (and was previously) designed to take a closure to be
-    // invoked without arguments, but in all the cases we care about we
-    // already have an existing method we want to call, so there's no need
-    // to create a new function object. We can even get away with assuming
-    // the method takes exactly one argument, since that happens to be true
-    // in every case, so we don't have to touch the arguments object. The
-    // only additional allocation required is the completion record, which
-    // has a stable shape and so hopefully should be cheap to allocate.
-    function tryCatch(fn, obj, arg) {
-      try {
-        return {
-          type: "normal",
-          arg: fn.call(obj, arg)
-        };
-      } catch (err) {
-        return {
-          type: "throw",
-          arg: err
-        };
+    module.exports = _regeneratorDefine = function regeneratorDefine(e, r, n, t) {
+      function o(r, n) {
+        _regeneratorDefine(e, r, function (e) {
+          return this._invoke(r, n, e);
+        });
       }
+      r ? i ? i(e, r, {
+        value: n,
+        enumerable: !t,
+        configurable: !t,
+        writable: !t
+      }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2));
+    }, module.exports.__esModule = true, module.exports["default"] = module.exports, _regeneratorDefine(e, r, n, t);
+  }
+  module.exports = _regeneratorDefine, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(regeneratorDefine);
+
+(function (module) {
+  var regeneratorDefine$1 = regeneratorDefine.exports;
+  function _regenerator() {
+    /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+    var e,
+      t,
+      r = "function" == typeof Symbol ? Symbol : {},
+      n = r.iterator || "@@iterator",
+      o = r.toStringTag || "@@toStringTag";
+    function i(r, n, o, i) {
+      var c = n && n.prototype instanceof Generator ? n : Generator,
+        u = Object.create(c.prototype);
+      return regeneratorDefine$1(u, "_invoke", function (r, n, o) {
+        var i,
+          c,
+          u,
+          f = 0,
+          p = o || [],
+          y = !1,
+          G = {
+            p: 0,
+            n: 0,
+            v: e,
+            a: d,
+            f: d.bind(e, 4),
+            d: function d(t, r) {
+              return i = t, c = 0, u = e, G.n = r, a;
+            }
+          };
+        function d(r, n) {
+          for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) {
+            var o,
+              i = p[t],
+              d = G.p,
+              l = i[2];
+            r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0));
+          }
+          if (o || r > 1) return a;
+          throw y = !0, n;
+        }
+        return function (o, p, l) {
+          if (f > 1) throw TypeError("Generator is already running");
+          for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) {
+            i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u);
+            try {
+              if (f = 2, i) {
+                if (c || (o = "next"), t = i[o]) {
+                  if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object");
+                  if (!t.done) return t;
+                  u = t.value, c < 2 && (c = 0);
+                } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1);
+                i = e;
+              } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break;
+            } catch (t) {
+              i = e, c = 1, u = t;
+            } finally {
+              f = 1;
+            }
+          }
+          return {
+            value: t,
+            done: y
+          };
+        };
+      }(r, o, i), !0), u;
     }
-    var GenStateSuspendedStart = "suspendedStart";
-    var GenStateSuspendedYield = "suspendedYield";
-    var GenStateExecuting = "executing";
-    var GenStateCompleted = "completed";
-
-    // Returning this object from the innerFn has the same effect as
-    // breaking out of the dispatch switch statement.
-    var ContinueSentinel = {};
-
-    // Dummy constructor functions that we use as the .constructor and
-    // .constructor.prototype properties for functions that return Generator
-    // objects. For full spec compliance, you may wish to configure your
-    // minifier not to mangle the names of these two functions.
+    var a = {};
     function Generator() {}
     function GeneratorFunction() {}
     function GeneratorFunctionPrototype() {}
-
-    // This is a polyfill for %IteratorPrototype% for environments that
-    // don't natively support it.
-    var IteratorPrototype = {};
-    define(IteratorPrototype, iteratorSymbol, function () {
+    t = Object.getPrototypeOf;
+    var c = [][n] ? t(t([][n]())) : (regeneratorDefine$1(t = {}, n, function () {
+        return this;
+      }), t),
+      u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c);
+    function f(e) {
+      return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, regeneratorDefine$1(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e;
+    }
+    return GeneratorFunction.prototype = GeneratorFunctionPrototype, regeneratorDefine$1(u, "constructor", GeneratorFunctionPrototype), regeneratorDefine$1(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", regeneratorDefine$1(GeneratorFunctionPrototype, o, "GeneratorFunction"), regeneratorDefine$1(u), regeneratorDefine$1(u, o, "Generator"), regeneratorDefine$1(u, n, function () {
       return this;
-    });
-    var getProto = Object.getPrototypeOf;
-    var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-    if (NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-      // This environment has a native %IteratorPrototype%; use it instead
-      // of the polyfill.
-      IteratorPrototype = NativeIteratorPrototype;
-    }
-    var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
-    GeneratorFunction.prototype = GeneratorFunctionPrototype;
-    define(Gp, "constructor", GeneratorFunctionPrototype);
-    define(GeneratorFunctionPrototype, "constructor", GeneratorFunction);
-    GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction");
-
-    // Helper for defining the .next, .throw, and .return methods of the
-    // Iterator interface in terms of a single ._invoke method.
-    function defineIteratorMethods(prototype) {
-      ["next", "throw", "return"].forEach(function (method) {
-        define(prototype, method, function (arg) {
-          return this._invoke(method, arg);
-        });
-      });
-    }
-    exports.isGeneratorFunction = function (genFun) {
-      var ctor = typeof genFun === "function" && genFun.constructor;
-      return ctor ? ctor === GeneratorFunction ||
-      // For the native GeneratorFunction constructor, the best we can
-      // do is to check its .name property.
-      (ctor.displayName || ctor.name) === "GeneratorFunction" : false;
-    };
-    exports.mark = function (genFun) {
-      if (Object.setPrototypeOf) {
-        Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
-      } else {
-        genFun.__proto__ = GeneratorFunctionPrototype;
-        define(genFun, toStringTagSymbol, "GeneratorFunction");
-      }
-      genFun.prototype = Object.create(Gp);
-      return genFun;
-    };
-
-    // Within the body of any async function, `await x` is transformed to
-    // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-    // `hasOwn.call(value, "__await")` to determine if the yielded value is
-    // meant to be awaited.
-    exports.awrap = function (arg) {
-      return {
-        __await: arg
-      };
-    };
-    function AsyncIterator(generator, PromiseImpl) {
-      function invoke(method, arg, resolve, reject) {
-        var record = tryCatch(generator[method], generator, arg);
-        if (record.type === "throw") {
-          reject(record.arg);
-        } else {
-          var result = record.arg;
-          var value = result.value;
-          if (value && _typeof(value) === "object" && hasOwn.call(value, "__await")) {
-            return PromiseImpl.resolve(value.__await).then(function (value) {
-              invoke("next", value, resolve, reject);
-            }, function (err) {
-              invoke("throw", err, resolve, reject);
-            });
-          }
-          return PromiseImpl.resolve(value).then(function (unwrapped) {
-            // When a yielded Promise is resolved, its final value becomes
-            // the .value of the Promise<{value,done}> result for the
-            // current iteration.
-            result.value = unwrapped;
-            resolve(result);
-          }, function (error) {
-            // If a rejected Promise was yielded, throw the rejection back
-            // into the async generator function so it can be handled there.
-            return invoke("throw", error, resolve, reject);
-          });
-        }
-      }
-      var previousPromise;
-      function enqueue(method, arg) {
-        function callInvokeWithMethodAndArg() {
-          return new PromiseImpl(function (resolve, reject) {
-            invoke(method, arg, resolve, reject);
-          });
-        }
-        return previousPromise =
-        // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(callInvokeWithMethodAndArg,
-        // Avoid propagating failures to Promises returned by later
-        // invocations of the iterator.
-        callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
-      }
-
-      // Define the unified helper method that is used to implement .next,
-      // .throw, and .return (see defineIteratorMethods).
-      this._invoke = enqueue;
-    }
-    defineIteratorMethods(AsyncIterator.prototype);
-    define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
-      return this;
-    });
-    exports.AsyncIterator = AsyncIterator;
-
-    // Note that simple async functions are implemented on top of
-    // AsyncIterator objects; they just return a Promise for the value of
-    // the final result produced by the iterator.
-    exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
-      if (PromiseImpl === void 0) PromiseImpl = Promise;
-      var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
-      return exports.isGeneratorFunction(outerFn) ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function (result) {
-        return result.done ? result.value : iter.next();
-      });
-    };
-    function makeInvokeMethod(innerFn, self, context) {
-      var state = GenStateSuspendedStart;
-      return function invoke(method, arg) {
-        if (state === GenStateExecuting) {
-          throw new Error("Generator is already running");
-        }
-        if (state === GenStateCompleted) {
-          if (method === "throw") {
-            throw arg;
-          }
-
-          // Be forgiving, per 25.3.3.3.3 of the spec:
-          // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
-          return doneResult();
-        }
-        context.method = method;
-        context.arg = arg;
-        while (true) {
-          var delegate = context.delegate;
-          if (delegate) {
-            var delegateResult = maybeInvokeDelegate(delegate, context);
-            if (delegateResult) {
-              if (delegateResult === ContinueSentinel) continue;
-              return delegateResult;
-            }
-          }
-          if (context.method === "next") {
-            // Setting context._sent for legacy support of Babel's
-            // function.sent implementation.
-            context.sent = context._sent = context.arg;
-          } else if (context.method === "throw") {
-            if (state === GenStateSuspendedStart) {
-              state = GenStateCompleted;
-              throw context.arg;
-            }
-            context.dispatchException(context.arg);
-          } else if (context.method === "return") {
-            context.abrupt("return", context.arg);
-          }
-          state = GenStateExecuting;
-          var record = tryCatch(innerFn, self, context);
-          if (record.type === "normal") {
-            // If an exception is thrown from innerFn, we leave state ===
-            // GenStateExecuting and loop back for another invocation.
-            state = context.done ? GenStateCompleted : GenStateSuspendedYield;
-            if (record.arg === ContinueSentinel) {
-              continue;
-            }
-            return {
-              value: record.arg,
-              done: context.done
-            };
-          } else if (record.type === "throw") {
-            state = GenStateCompleted;
-            // Dispatch the exception by looping back around to the
-            // context.dispatchException(context.arg) call above.
-            context.method = "throw";
-            context.arg = record.arg;
-          }
-        }
-      };
-    }
-
-    // Call delegate.iterator[context.method](context.arg) and handle the
-    // result, either by returning a { value, done } result from the
-    // delegate iterator, or by modifying context.method and context.arg,
-    // setting context.delegate to null, and returning the ContinueSentinel.
-    function maybeInvokeDelegate(delegate, context) {
-      var method = delegate.iterator[context.method];
-      if (method === undefined$1) {
-        // A .throw or .return when the delegate iterator has no .throw
-        // method always terminates the yield* loop.
-        context.delegate = null;
-        if (context.method === "throw") {
-          // Note: ["return"] must be used for ES3 parsing compatibility.
-          if (delegate.iterator["return"]) {
-            // If the delegate iterator has a return method, give it a
-            // chance to clean up.
-            context.method = "return";
-            context.arg = undefined$1;
-            maybeInvokeDelegate(delegate, context);
-            if (context.method === "throw") {
-              // If maybeInvokeDelegate(context) changed context.method from
-              // "return" to "throw", let that override the TypeError below.
-              return ContinueSentinel;
-            }
-          }
-          context.method = "throw";
-          context.arg = new TypeError("The iterator does not provide a 'throw' method");
-        }
-        return ContinueSentinel;
-      }
-      var record = tryCatch(method, delegate.iterator, context.arg);
-      if (record.type === "throw") {
-        context.method = "throw";
-        context.arg = record.arg;
-        context.delegate = null;
-        return ContinueSentinel;
-      }
-      var info = record.arg;
-      if (!info) {
-        context.method = "throw";
-        context.arg = new TypeError("iterator result is not an object");
-        context.delegate = null;
-        return ContinueSentinel;
-      }
-      if (info.done) {
-        // Assign the result of the finished delegate to the temporary
-        // variable specified by delegate.resultName (see delegateYield).
-        context[delegate.resultName] = info.value;
-
-        // Resume execution at the desired location (see delegateYield).
-        context.next = delegate.nextLoc;
-
-        // If context.method was "throw" but the delegate handled the
-        // exception, let the outer generator proceed normally. If
-        // context.method was "next", forget context.arg since it has been
-        // "consumed" by the delegate iterator. If context.method was
-        // "return", allow the original .return call to continue in the
-        // outer generator.
-        if (context.method !== "return") {
-          context.method = "next";
-          context.arg = undefined$1;
-        }
-      } else {
-        // Re-yield the result returned by the delegate method.
-        return info;
-      }
-
-      // The delegate iterator is finished, so forget it and continue with
-      // the outer generator.
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    // Define Generator.prototype.{next,throw,return} in terms of the
-    // unified ._invoke helper method.
-    defineIteratorMethods(Gp);
-    define(Gp, toStringTagSymbol, "Generator");
-
-    // A Generator should always return itself as the iterator object when the
-    // @@iterator function is called on it. Some browsers' implementations of the
-    // iterator prototype chain incorrectly implement this, causing the Generator
-    // object to not be returned from this call. This ensures that doesn't happen.
-    // See https://github.com/facebook/regenerator/issues/274 for more details.
-    define(Gp, iteratorSymbol, function () {
-      return this;
-    });
-    define(Gp, "toString", function () {
+    }), regeneratorDefine$1(u, "toString", function () {
       return "[object Generator]";
-    });
-    function pushTryEntry(locs) {
-      var entry = {
-        tryLoc: locs[0]
-      };
-      if (1 in locs) {
-        entry.catchLoc = locs[1];
-      }
-      if (2 in locs) {
-        entry.finallyLoc = locs[2];
-        entry.afterLoc = locs[3];
-      }
-      this.tryEntries.push(entry);
-    }
-    function resetTryEntry(entry) {
-      var record = entry.completion || {};
-      record.type = "normal";
-      delete record.arg;
-      entry.completion = record;
-    }
-    function Context(tryLocsList) {
-      // The root entry object (effectively a try statement without a catch
-      // or a finally block) gives us a place to store values thrown from
-      // locations where there is no enclosing try statement.
-      this.tryEntries = [{
-        tryLoc: "root"
-      }];
-      tryLocsList.forEach(pushTryEntry, this);
-      this.reset(true);
-    }
-    exports.keys = function (object) {
-      var keys = [];
-      for (var key in object) {
-        keys.push(key);
-      }
-      keys.reverse();
-
-      // Rather than returning an object with a next method, we keep
-      // things simple and return the next function itself.
-      return function next() {
-        while (keys.length) {
-          var key = keys.pop();
-          if (key in object) {
-            next.value = key;
-            next.done = false;
-            return next;
-          }
-        }
-
-        // To avoid creating an additional object, we just hang the .value
-        // and .done properties off the next function object itself. This
-        // also ensures that the minifier will not anonymize the function.
-        next.done = true;
-        return next;
-      };
-    };
-    function values(iterable) {
-      if (iterable) {
-        var iteratorMethod = iterable[iteratorSymbol];
-        if (iteratorMethod) {
-          return iteratorMethod.call(iterable);
-        }
-        if (typeof iterable.next === "function") {
-          return iterable;
-        }
-        if (!isNaN(iterable.length)) {
-          var i = -1,
-            next = function next() {
-              while (++i < iterable.length) {
-                if (hasOwn.call(iterable, i)) {
-                  next.value = iterable[i];
-                  next.done = false;
-                  return next;
-                }
-              }
-              next.value = undefined$1;
-              next.done = true;
-              return next;
-            };
-          return next.next = next;
-        }
-      }
-
-      // Return an iterator with no values.
+    }), (module.exports = _regenerator = function _regenerator() {
       return {
-        next: doneResult
+        w: i,
+        m: f
       };
-    }
-    exports.values = values;
-    function doneResult() {
-      return {
-        value: undefined$1,
-        done: true
-      };
-    }
-    Context.prototype = {
-      constructor: Context,
-      reset: function reset(skipTempReset) {
-        this.prev = 0;
-        this.next = 0;
-        // Resetting context._sent for legacy support of Babel's
-        // function.sent implementation.
-        this.sent = this._sent = undefined$1;
-        this.done = false;
-        this.delegate = null;
-        this.method = "next";
-        this.arg = undefined$1;
-        this.tryEntries.forEach(resetTryEntry);
-        if (!skipTempReset) {
-          for (var name in this) {
-            // Not sure about the optimal order of these conditions:
-            if (name.charAt(0) === "t" && hasOwn.call(this, name) && !isNaN(+name.slice(1))) {
-              this[name] = undefined$1;
-            }
-          }
-        }
-      },
-      stop: function stop() {
-        this.done = true;
-        var rootEntry = this.tryEntries[0];
-        var rootRecord = rootEntry.completion;
-        if (rootRecord.type === "throw") {
-          throw rootRecord.arg;
-        }
-        return this.rval;
-      },
-      dispatchException: function dispatchException(exception) {
-        if (this.done) {
-          throw exception;
-        }
-        var context = this;
-        function handle(loc, caught) {
-          record.type = "throw";
-          record.arg = exception;
-          context.next = loc;
-          if (caught) {
-            // If the dispatched exception was caught by a catch block,
-            // then let that catch block handle the exception normally.
-            context.method = "next";
-            context.arg = undefined$1;
-          }
-          return !!caught;
-        }
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-          var record = entry.completion;
-          if (entry.tryLoc === "root") {
-            // Exception thrown outside of any try block that could handle
-            // it, so set the completion value of the entire function to
-            // throw the exception.
-            return handle("end");
-          }
-          if (entry.tryLoc <= this.prev) {
-            var hasCatch = hasOwn.call(entry, "catchLoc");
-            var hasFinally = hasOwn.call(entry, "finallyLoc");
-            if (hasCatch && hasFinally) {
-              if (this.prev < entry.catchLoc) {
-                return handle(entry.catchLoc, true);
-              } else if (this.prev < entry.finallyLoc) {
-                return handle(entry.finallyLoc);
-              }
-            } else if (hasCatch) {
-              if (this.prev < entry.catchLoc) {
-                return handle(entry.catchLoc, true);
-              }
-            } else if (hasFinally) {
-              if (this.prev < entry.finallyLoc) {
-                return handle(entry.finallyLoc);
-              }
-            } else {
-              throw new Error("try statement without catch or finally");
-            }
-          }
-        }
-      },
-      abrupt: function abrupt(type, arg) {
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-          if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
-            var finallyEntry = entry;
-            break;
-          }
-        }
-        if (finallyEntry && (type === "break" || type === "continue") && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc) {
-          // Ignore the finally entry if control is not jumping to a
-          // location outside the try/catch block.
-          finallyEntry = null;
-        }
-        var record = finallyEntry ? finallyEntry.completion : {};
-        record.type = type;
-        record.arg = arg;
-        if (finallyEntry) {
-          this.method = "next";
-          this.next = finallyEntry.finallyLoc;
-          return ContinueSentinel;
-        }
-        return this.complete(record);
-      },
-      complete: function complete(record, afterLoc) {
-        if (record.type === "throw") {
-          throw record.arg;
-        }
-        if (record.type === "break" || record.type === "continue") {
-          this.next = record.arg;
-        } else if (record.type === "return") {
-          this.rval = this.arg = record.arg;
-          this.method = "return";
-          this.next = "end";
-        } else if (record.type === "normal" && afterLoc) {
-          this.next = afterLoc;
-        }
-        return ContinueSentinel;
-      },
-      finish: function finish(finallyLoc) {
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-          if (entry.finallyLoc === finallyLoc) {
-            this.complete(entry.completion, entry.afterLoc);
-            resetTryEntry(entry);
-            return ContinueSentinel;
-          }
-        }
-      },
-      "catch": function _catch(tryLoc) {
-        for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-          var entry = this.tryEntries[i];
-          if (entry.tryLoc === tryLoc) {
-            var record = entry.completion;
-            if (record.type === "throw") {
-              var thrown = record.arg;
-              resetTryEntry(entry);
-            }
-            return thrown;
-          }
-        }
-
-        // The context.catch method must only be called with a location
-        // argument that corresponds to a known catch block.
-        throw new Error("illegal catch attempt");
-      },
-      delegateYield: function delegateYield(iterable, resultName, nextLoc) {
-        this.delegate = {
-          iterator: values(iterable),
-          resultName: resultName,
-          nextLoc: nextLoc
-        };
-        if (this.method === "next") {
-          // Deliberately forget the last sent value so that we don't
-          // accidentally pass it on to the delegate.
-          this.arg = undefined$1;
-        }
-        return ContinueSentinel;
-      }
-    };
-
-    // Regardless of whether this script is executing as a CommonJS module
-    // or not, return the runtime object so that we can declare the variable
-    // regeneratorRuntime in the outer scope, which allows this module to be
-    // injected easily by `bin/regenerator --include-runtime script.js`.
-    return exports;
-  }(
-  // If this script is executing as a CommonJS module, use module.exports
-  // as the regeneratorRuntime namespace. Otherwise create a new empty
-  // object. Either way, the resulting object will be used to initialize
-  // the regeneratorRuntime variable at the top of this file.
-  module.exports );
-  try {
-    regeneratorRuntime = runtime;
-  } catch (accidentalStrictMode) {
-    // This module should not be running in strict mode, so the above
-    // assignment should always work unless something is misconfigured. Just
-    // in case runtime.js accidentally runs in strict mode, in modern engines
-    // we can explicitly access globalThis. In older engines we can escape
-    // strict mode using a global Function call. This could conceivably fail
-    // if a Content Security Policy forbids using Function, but in that case
-    // the proper solution is to fix the accidental strict mode problem. If
-    // you've misconfigured your bundler to force strict mode and applied a
-    // CSP to forbid Function, and you're not willing to fix either of those
-    // problems, please detail your unique predicament in a GitHub issue.
-    if ((typeof globalThis === "undefined" ? "undefined" : _typeof(globalThis)) === "object") {
-      globalThis.regeneratorRuntime = runtime;
-    } else {
-      Function("r", "regeneratorRuntime = r")(runtime);
-    }
+    }, module.exports.__esModule = true, module.exports["default"] = module.exports)();
   }
-})(runtime);
-var runtimeExports = runtime.exports;
+  module.exports = _regenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(regenerator$1);
 
-var regenerator = runtimeExports;
-var _regeneratorRuntime = /*@__PURE__*/getDefaultExportFromCjs(regenerator);
+var regeneratorAsync = {exports: {}};
 
-var log = log$2;
+var regeneratorAsyncGen = {exports: {}};
+
+var regeneratorAsyncIterator = {exports: {}};
+
+(function (module) {
+  var OverloadYield$1 = OverloadYield.exports;
+  var regeneratorDefine$1 = regeneratorDefine.exports;
+  function AsyncIterator(t, e) {
+    function n(r, o, i, f) {
+      try {
+        var c = t[r](o),
+          u = c.value;
+        return u instanceof OverloadYield$1 ? e.resolve(u.v).then(function (t) {
+          n("next", t, i, f);
+        }, function (t) {
+          n("throw", t, i, f);
+        }) : e.resolve(u).then(function (t) {
+          c.value = t, i(c);
+        }, function (t) {
+          return n("throw", t, i, f);
+        });
+      } catch (t) {
+        f(t);
+      }
+    }
+    var r;
+    this.next || (regeneratorDefine$1(AsyncIterator.prototype), regeneratorDefine$1(AsyncIterator.prototype, "function" == typeof Symbol && Symbol.asyncIterator || "@asyncIterator", function () {
+      return this;
+    })), regeneratorDefine$1(this, "_invoke", function (t, o, i) {
+      function f() {
+        return new e(function (e, r) {
+          n(t, i, e, r);
+        });
+      }
+      return r = r ? r.then(f, f) : f();
+    }, !0);
+  }
+  module.exports = AsyncIterator, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(regeneratorAsyncIterator);
+
+(function (module) {
+  var regenerator = regenerator$1.exports;
+  var regeneratorAsyncIterator$1 = regeneratorAsyncIterator.exports;
+  function _regeneratorAsyncGen(r, e, t, o, n) {
+    return new regeneratorAsyncIterator$1(regenerator().w(r, e, t, o), n || Promise);
+  }
+  module.exports = _regeneratorAsyncGen, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(regeneratorAsyncGen);
+
+(function (module) {
+  var regeneratorAsyncGen$1 = regeneratorAsyncGen.exports;
+  function _regeneratorAsync(n, e, r, t, o) {
+    var a = regeneratorAsyncGen$1(n, e, r, t, o);
+    return a.next().then(function (n) {
+      return n.done ? n.value : a.next();
+    });
+  }
+  module.exports = _regeneratorAsync, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(regeneratorAsync);
+
+var regeneratorKeys = {exports: {}};
+
+(function (module) {
+  function _regeneratorKeys(e) {
+    var n = Object(e),
+      r = [];
+    for (var t in n) r.unshift(t);
+    return function e() {
+      for (; r.length;) if ((t = r.pop()) in n) return e.value = t, e.done = !1, e;
+      return e.done = !0, e;
+    };
+  }
+  module.exports = _regeneratorKeys, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(regeneratorKeys);
+
+var regeneratorValues = {exports: {}};
+
+var _typeof = {exports: {}};
+
+(function (module) {
+  function _typeof(o) {
+    "@babel/helpers - typeof";
+
+    return module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+      return typeof o;
+    } : function (o) {
+      return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+    }, module.exports.__esModule = true, module.exports["default"] = module.exports, _typeof(o);
+  }
+  module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(_typeof);
+
+(function (module) {
+  var _typeof$1 = _typeof.exports["default"];
+  function _regeneratorValues(e) {
+    if (null != e) {
+      var t = e["function" == typeof Symbol && Symbol.iterator || "@@iterator"],
+        r = 0;
+      if (t) return t.call(e);
+      if ("function" == typeof e.next) return e;
+      if (!isNaN(e.length)) return {
+        next: function next() {
+          return e && r >= e.length && (e = void 0), {
+            value: e && e[r++],
+            done: !e
+          };
+        }
+      };
+    }
+    throw new TypeError(_typeof$1(e) + " is not iterable");
+  }
+  module.exports = _regeneratorValues, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(regeneratorValues);
+
+(function (module) {
+  var OverloadYield$1 = OverloadYield.exports;
+  var regenerator = regenerator$1.exports;
+  var regeneratorAsync$1 = regeneratorAsync.exports;
+  var regeneratorAsyncGen$1 = regeneratorAsyncGen.exports;
+  var regeneratorAsyncIterator$1 = regeneratorAsyncIterator.exports;
+  var regeneratorKeys$1 = regeneratorKeys.exports;
+  var regeneratorValues$1 = regeneratorValues.exports;
+  function _regeneratorRuntime() {
+
+    var r = regenerator(),
+      e = r.m(_regeneratorRuntime),
+      t = (Object.getPrototypeOf ? Object.getPrototypeOf(e) : e.__proto__).constructor;
+    function n(r) {
+      var e = "function" == typeof r && r.constructor;
+      return !!e && (e === t || "GeneratorFunction" === (e.displayName || e.name));
+    }
+    var o = {
+      "throw": 1,
+      "return": 2,
+      "break": 3,
+      "continue": 3
+    };
+    function a(r) {
+      var e, t;
+      return function (n) {
+        e || (e = {
+          stop: function stop() {
+            return t(n.a, 2);
+          },
+          "catch": function _catch() {
+            return n.v;
+          },
+          abrupt: function abrupt(r, e) {
+            return t(n.a, o[r], e);
+          },
+          delegateYield: function delegateYield(r, o, a) {
+            return e.resultName = o, t(n.d, regeneratorValues$1(r), a);
+          },
+          finish: function finish(r) {
+            return t(n.f, r);
+          }
+        }, t = function t(r, _t, o) {
+          n.p = e.prev, n.n = e.next;
+          try {
+            return r(_t, o);
+          } finally {
+            e.next = n.n;
+          }
+        }), e.resultName && (e[e.resultName] = n.v, e.resultName = void 0), e.sent = n.v, e.next = n.n;
+        try {
+          return r.call(this, e);
+        } finally {
+          n.p = e.prev, n.n = e.next;
+        }
+      };
+    }
+    return (module.exports = _regeneratorRuntime = function _regeneratorRuntime() {
+      return {
+        wrap: function wrap(e, t, n, o) {
+          return r.w(a(e), t, n, o && o.reverse());
+        },
+        isGeneratorFunction: n,
+        mark: r.m,
+        awrap: function awrap(r, e) {
+          return new OverloadYield$1(r, e);
+        },
+        AsyncIterator: regeneratorAsyncIterator$1,
+        async: function async(r, e, t, o, u) {
+          return (n(e) ? regeneratorAsyncGen$1 : regeneratorAsync$1)(a(r), e, t, o, u);
+        },
+        keys: regeneratorKeys$1,
+        values: regeneratorValues$1
+      };
+    }, module.exports.__esModule = true, module.exports["default"] = module.exports)();
+  }
+  module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
+})(regeneratorRuntime$1);
+
+// TODO(Babel 8): Remove this file.
+
+var runtime = regeneratorRuntime$1.exports();
+var regenerator = runtime;
+
+// Copied from https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js#L736=
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  if ((typeof globalThis === "undefined" ? "undefined" : _typeof$1(globalThis)) === "object") {
+    globalThis.regeneratorRuntime = runtime;
+  } else {
+    Function("r", "regeneratorRuntime = r")(runtime);
+  }
+}
+
+var log$1 = log$3;
 var uint8ArrayToBase64$1 = function uint8ArrayToBase64(array) {
-  return window.btoa(String.fromCharCode.apply(String, _toConsumableArray$1(array)));
+  return window.btoa(String.fromCharCode.apply(String, _toConsumableArray(array)));
 };
 var base64ToUint8Array$1 = function base64ToUint8Array(base64) {
   var raw = window.atob(base64);
@@ -3104,7 +2693,7 @@ var WebSerial = /*#__PURE__*/function () {
    */
   function WebSerial(runtime, extensionId, peripheralOptions, connectCallback) {
     var resetCallback = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : null;
-    _classCallCheck$1(this, WebSerial);
+    _classCallCheck(this, WebSerial);
     /**
      * Remote device which have been connected.
      * @type {SerialPort}
@@ -3142,7 +2731,7 @@ var WebSerial = /*#__PURE__*/function () {
    * Request user to choose a device, and then connect it automatically.
    * @return {Promise} - a Promise which will resolved when a serial-port was selected.
    */
-  _createClass$1(WebSerial, [{
+  return _createClass(WebSerial, [{
     key: "requestPeripheral",
     value: function requestPeripheral() {
       var _this = this;
@@ -3168,7 +2757,7 @@ var WebSerial = /*#__PURE__*/function () {
      */
   }, {
     key: "connectPeripheral",
-    value: function connectPeripheral( /* id */
+    value: function connectPeripheral(/* id */
     ) {
       var _this2 = this;
       if (!this.port) {
@@ -3176,11 +2765,11 @@ var WebSerial = /*#__PURE__*/function () {
       }
       var ChValueTransformer = /*#__PURE__*/function () {
         function ChValueTransformer() {
-          _classCallCheck$1(this, ChValueTransformer);
+          _classCallCheck(this, ChValueTransformer);
           // A container for holding stream data until a new frame.
           this.chunks = [];
         }
-        _createClass$1(ChValueTransformer, [{
+        return _createClass(ChValueTransformer, [{
           key: "transform",
           value: function transform(chunk, controller) {
             // Append new chunks to existing chunks.
@@ -3239,10 +2828,9 @@ var WebSerial = /*#__PURE__*/function () {
             controller.terminate();
           }
         }]);
-        return ChValueTransformer;
       }();
       this.port.open(this._serialOptions).then(function () {
-        log.log("SerialPort: open");
+        log$1.log("SerialPort: open");
         _this2.state = 'open';
         _this2.writer = _this2.port.writable.getWriter();
         // eslint-disable-next-line no-undef
@@ -3266,37 +2854,37 @@ var WebSerial = /*#__PURE__*/function () {
   }, {
     key: "disconnect",
     value: (function () {
-      var _disconnect = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
-        return _regeneratorRuntime.wrap(function _callee$(_context) {
+      var _disconnect = _asyncToGenerator(/*#__PURE__*/regenerator.mark(function _callee() {
+        return regenerator.wrap(function (_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               if (!(this.state !== 'open')) {
-                _context.next = 2;
+                _context.next = 1;
                 break;
               }
               return _context.abrupt("return");
-            case 2:
+            case 1:
               this.state = 'closing';
               this.stopReceiving();
-              _context.next = 6;
+              _context.next = 2;
               return this.reader.cancel();
-            case 6:
-              _context.next = 8;
+            case 2:
+              _context.next = 3;
               return this.readableStreamClosed.catch(function () {/* Ignore the error */});
-            case 8:
+            case 3:
               this.writer.close();
-              _context.next = 11;
+              _context.next = 4;
               return this.writer.closed;
-            case 11:
-              _context.next = 13;
+            case 4:
+              _context.next = 5;
               return this.port.close();
-            case 13:
+            case 5:
               this.state = 'close';
               this.reader = null;
               this.writer = null;
               this.port = null;
               this._runtime.emit(this._runtime.constructor.PERIPHERAL_DISCONNECTED);
-            case 18:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -3430,7 +3018,7 @@ var WebSerial = /*#__PURE__*/function () {
         }
         _this6.sendData(dataFrame).then(function () {
           var checkInterval = 10;
-          var check = function check(count) {
+          var _check = function check(count) {
             var received = _this6.chValues[ch];
             if (received && received[ChResponse.READ]) {
               return resolve({
@@ -3442,10 +3030,10 @@ var WebSerial = /*#__PURE__*/function () {
               return resolve(null);
             }
             setTimeout(function () {
-              check(count);
+              _check(count);
             }, checkInterval);
           };
-          check(50);
+          _check(50);
         });
       });
     }
@@ -3477,11 +3065,11 @@ var WebSerial = /*#__PURE__*/function () {
           message: uint8ArrayToBase64$1(this.chValues[ch][ChResponse.READ])
         });
       }
-      var readRetry = function readRetry(count) {
+      var _readRetry = function readRetry(count) {
         return new Promise(function (resolve, reject) {
           if (count < 0) {
             reject(new Error("no response"));
-            log.debug("read ch: ".concat(ch, " dose not response"));
+            log$1.debug("read ch: ".concat(ch, " dose not response"));
             return;
           }
           _this7.readCh(ch).then(function (result) {
@@ -3496,17 +3084,17 @@ var WebSerial = /*#__PURE__*/function () {
               return;
             }
             count--;
-            resolve(readRetry(count));
+            resolve(_readRetry(count));
             return;
           }).catch(function (err) {
             resolve(null);
-            log.debug(err);
+            log$1.debug(err);
             return;
           });
         });
       };
-      return readRetry(2).catch(function (err) {
-        log.debug(err);
+      return _readRetry(2).catch(function (err) {
+        log$1.debug(err);
         _this7.handleDisconnectError(err);
         return;
       });
@@ -3533,14 +3121,14 @@ var WebSerial = /*#__PURE__*/function () {
         header[2] = ch >> 8;
         header[3] = ch & 0xFF;
         header[4] = value.length;
-        var dataFrame = new Uint8Array([].concat(_toConsumableArray$1(header), _toConsumableArray$1(value), [0]));
+        var dataFrame = new Uint8Array([].concat(_toConsumableArray(header), _toConsumableArray(value), [0]));
         dataFrame[dataFrame.length - 1] = dataFrame.reduce(function (acc, cur) {
           return acc + cur;
         }) % 0xFF;
         if (withResponse) {
           _this8.sendData(dataFrame).then(function () {
             var checkInterval = 10;
-            var check = function check(count) {
+            var _check2 = function check(count) {
               var received = _this8.chValues[ch];
               if (received && received[ChResponse.WRITE_RESPONSE]) {
                 return resolve(received[ChResponse.WRITE_RESPONSE][0] === 1);
@@ -3550,10 +3138,10 @@ var WebSerial = /*#__PURE__*/function () {
                 return resolve(false);
               }
               setTimeout(function () {
-                check(count);
+                _check2(count);
               }, checkInterval);
             };
-            check(20);
+            _check2(20);
           });
         } else {
           _this8.sendData(dataFrame).then(function () {
@@ -3585,11 +3173,11 @@ var WebSerial = /*#__PURE__*/function () {
       if (this.chValues[ch]) {
         this.chValues[ch][ChResponse.WRITE_RESPONSE] = null;
       }
-      var writeRetry = function writeRetry(count) {
+      var _writeRetry = function writeRetry(count) {
         return new Promise(function (resolve, reject) {
           if (count < 0) {
             reject(new Error("no response"));
-            log.debug("write ch: ".concat(ch, " dose not response"));
+            log$1.debug("write ch: ".concat(ch, " dose not response"));
             return;
           }
           _this9.writeCh(ch, value, withResponse).then(function (result) {
@@ -3598,17 +3186,17 @@ var WebSerial = /*#__PURE__*/function () {
               return;
             }
             count--;
-            resolve(writeRetry(count));
+            resolve(_writeRetry(count));
             return;
           }).catch(function (err) {
             resolve(null);
-            log.debug(err);
+            log$1.debug(err);
             return;
           });
         });
       };
-      return writeRetry(2).catch(function (err) {
-        log.debug(err);
+      return _writeRetry(2).catch(function (err) {
+        log$1.debug(err);
         _this9.handleDisconnectError(err);
         return;
       });
@@ -3627,23 +3215,23 @@ var WebSerial = /*#__PURE__*/function () {
      */
   }, {
     key: "handleDisconnectError",
-    value: function handleDisconnectError( /* e */
+    value: function handleDisconnectError(/* e */
     ) {
-      var _this10 = this;
+      var _this0 = this;
       if (this.state !== 'open') return;
       this.disconnect().then(function () {
-        if (_this10._resetCallback) {
-          _this10._resetCallback();
+        if (_this0._resetCallback) {
+          _this0._resetCallback();
         }
-        _this10._runtime.emit(_this10._runtime.constructor.PERIPHERAL_CONNECTION_LOST_ERROR, {
+        _this0._runtime.emit(_this0._runtime.constructor.PERIPHERAL_CONNECTION_LOST_ERROR, {
           message: "Scratch lost connection to",
-          extensionId: _this10._extensionId
+          extensionId: _this0._extensionId
         });
       });
     }
   }, {
     key: "_handleRequestError",
-    value: function _handleRequestError( /* e */
+    value: function _handleRequestError(/* e */
     ) {
       // log.error(`BLE error: ${JSON.stringify(e)}`);
 
@@ -3658,18 +3246,16 @@ var WebSerial = /*#__PURE__*/function () {
      */
   }, {
     key: "onDisconnected",
-    value: function onDisconnected( /* event */
+    value: function onDisconnected(/* event */
     ) {
       this.handleDisconnectError(new Error('device disconnected'));
     }
   }]);
-  return WebSerial;
 }();
 var serialWeb = WebSerial;
-var WebSerial$1 = /*@__PURE__*/getDefaultExportFromCjs(serialWeb);
 
 var uint8ArrayToBase64 = function uint8ArrayToBase64(array) {
-  return window.btoa(String.fromCharCode.apply(String, _toConsumableArray$1(array)));
+  return window.btoa(String.fromCharCode.apply(String, _toConsumableArray(array)));
 };
 var base64ToUint8Array = function base64ToUint8Array(base64) {
   var raw = window.atob(base64);
@@ -3915,7 +3501,7 @@ var MicrobitMore = /*#__PURE__*/function () {
    */
   function MicrobitMore(runtime, extensionId) {
     var _this = this;
-    _classCallCheck$1(this, MicrobitMore);
+    _classCallCheck(this, MicrobitMore);
     /**
      * The Scratch 3.0 runtime used to trigger the green flag button.
      * @type {Runtime}
@@ -4050,7 +3636,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   /**
    * Initialize configuration of the micro:bit.
    */
-  _createClass$1(MicrobitMore, [{
+  return _createClass(MicrobitMore, [{
     key: "initConfig",
     value: function initConfig() {
       this.config = {};
@@ -4108,7 +3694,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       }
       return this.sendCommandSet([{
         id: BLECommand.CMD_DISPLAY << 5 | MbitMoreDisplayCommand.TEXT,
-        message: new Uint8Array([Math.min(255, Math.max(0, delay) / 10)].concat(_toConsumableArray$1(textData)))
+        message: new Uint8Array([Math.min(255, Math.max(0, delay) / 10)].concat(_toConsumableArray(textData)))
       }], util);
     }
 
@@ -4123,10 +3709,10 @@ var MicrobitMore = /*#__PURE__*/function () {
     value: function displayPixels(matrix, util) {
       var cmdSet = [{
         id: BLECommand.CMD_DISPLAY << 5 | MbitMoreDisplayCommand.PIXELS_0,
-        message: new Uint8Array([].concat(_toConsumableArray$1(matrix[0]), _toConsumableArray$1(matrix[1]), _toConsumableArray$1(matrix[2])))
+        message: new Uint8Array([].concat(_toConsumableArray(matrix[0]), _toConsumableArray(matrix[1]), _toConsumableArray(matrix[2])))
       }, {
         id: BLECommand.CMD_DISPLAY << 5 | MbitMoreDisplayCommand.PIXELS_1,
-        message: new Uint8Array([].concat(_toConsumableArray$1(matrix[3]), _toConsumableArray$1(matrix[4])))
+        message: new Uint8Array([].concat(_toConsumableArray(matrix[3]), _toConsumableArray(matrix[4])))
       }];
       return this.sendCommandSet(cmdSet, util);
     }
@@ -4521,7 +4107,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "scanBLE",
     value: function scanBLE() {
-      var connectorClass = BLE$1;
+      var connectorClass = ble;
       this._ble = new connectorClass(this.runtime, this._extensionId, {
         filters: [{
           namePrefix: 'BBC micro:bit'
@@ -4537,7 +4123,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "scanSerial",
     value: function scanSerial() {
-      this._ble = new WebSerial$1(this.runtime, this._extensionId, {
+      this._ble = new serialWeb(this.runtime, this._extensionId, {
         filters: [{
           usbVendorId: 0x0d28,
           usbProductId: 0x0204
@@ -4639,7 +4225,7 @@ var MicrobitMore = /*#__PURE__*/function () {
     key: "sendCommand",
     value: function sendCommand(command) {
       var _this7 = this;
-      var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray$1(command.message))));
+      var data = uint8ArrayToBase64(new Uint8Array([command.id].concat(_toConsumableArray(command.message))));
       return new Promise(function (resolve) {
         _this7._ble.write(MM_SERVICE.ID, MM_SERVICE.COMMAND_CH, data, 'base64', false);
         setTimeout(function () {
@@ -4709,12 +4295,22 @@ var MicrobitMore = /*#__PURE__*/function () {
         _this9.hardware = dataView.getUint8(0);
         _this9.protocol = dataView.getUint8(1);
         _this9.route = dataView.getUint8(2);
-        _this9._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.ACTION_EVENT_CH, _this9.onNotify);
-        _this9._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.PIN_EVENT_CH, _this9.onNotify);
+        _this9._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.ACTION_EVENT_CH, _this9.onNotify).catch(function (err) {
+          log.error("Failed to start notifications on ACTION_EVENT_CH: ".concat(err));
+        });
+        _this9._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.PIN_EVENT_CH, _this9.onNotify).catch(function (err) {
+          log.error("Failed to start notifications on PIN_EVENT_CH: ".concat(err));
+        });
         if (_this9.hardware === MbitMoreHardwareVersion.MICROBIT_V1) {
           _this9.microbitUpdateInterval = 100; // milliseconds
         } else {
-          _this9._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.MESSAGE_CH, _this9.onNotify);
+          log.debug("Attempting to start notifications on MESSAGE_CH for V2 hardware...");
+          _this9._ble.startNotifications(MM_SERVICE.ID, MM_SERVICE.MESSAGE_CH, _this9.onNotify).then(function () {
+            log.debug("MESSAGE_CH notifications started successfully");
+          }).catch(function (err) {
+            log.error("Failed to start notifications on MESSAGE_CH (data exchange will not work): ".concat(err));
+            log.error("Make sure your MakeCode firmware includes MESSAGE_CH characteristic with NOTIFY support");
+          });
           _this9.microbitUpdateInterval = 50; // milliseconds
         }
         if (_this9.route === CommunicationRoute.SERIAL) {
@@ -4742,6 +4338,9 @@ var MicrobitMore = /*#__PURE__*/function () {
       var data = base64ToUint8Array(msg);
       var dataView = new DataView(data.buffer, 0);
       var dataFormat = dataView.getUint8(19);
+      log.debug("[DATA RECV] format=0x".concat(dataFormat.toString(16), " rawData=[").concat(Array.from(data).map(function (b) {
+        return '0x' + b.toString(16).padStart(2, '0');
+      }).join(', '), "]"));
       if (dataFormat === MbitMoreDataFormat.ACTION_EVENT) {
         var actionEventType = dataView.getUint8(0);
         if (actionEventType === MbitMoreActionEvent.BUTTON) {
@@ -4767,18 +4366,22 @@ var MicrobitMore = /*#__PURE__*/function () {
         var label = new TextDecoder().decode(data.slice(0, 8).filter(function (char) {
           return char !== 0;
         }));
+        var content = dataView.getFloat32(8, true);
+        log.debug("[DATA RECV NUMBER] label=\"".concat(label, "\" content=").concat(content));
         this.receivedData[label] = {
-          content: dataView.getFloat32(8, true),
+          content: content,
           timestamp: Date.now()
         };
       } else if (dataFormat === MbitMoreDataFormat.DATA_TEXT) {
         var _label = new TextDecoder().decode(data.slice(0, 8).filter(function (char) {
           return char !== 0;
         }));
+        var _content = new TextDecoder().decode(data.slice(8, 20).filter(function (char) {
+          return char !== 0;
+        }));
+        log.debug("[DATA RECV TEXT] label=\"".concat(_label, "\" content=\"").concat(_content, "\""));
         this.receivedData[_label] = {
-          content: new TextDecoder().decode(data.slice(8, 20).filter(function (char) {
-            return char !== 0;
-          })),
+          content: _content,
           timestamp: Date.now()
         };
       }
@@ -4791,10 +4394,10 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "resetConnectionTimeout",
     value: function resetConnectionTimeout() {
-      var _this10 = this;
+      var _this0 = this;
       if (this._timeoutID) window.clearTimeout(this._timeoutID);
       this._timeoutID = window.setTimeout(function () {
-        return _this10._ble.handleDisconnectError(BLEDataStoppedError);
+        return _this0._ble.handleDisconnectError(BLEDataStoppedError);
       }, BLETimeout);
     }
 
@@ -4858,7 +4461,7 @@ var MicrobitMore = /*#__PURE__*/function () {
   }, {
     key: "configTouchPin",
     value: function configTouchPin(pinIndex, util) {
-      var _this11 = this;
+      var _this1 = this;
       if (!this.isConnected()) {
         return Promise.resolve();
       }
@@ -4871,7 +4474,7 @@ var MicrobitMore = /*#__PURE__*/function () {
       }], util);
       if (sendPromise) {
         return sendPromise.then(function () {
-          _this11.config.pinMode[pinIndex] = MbitMorePinMode.TOUCH;
+          _this1.config.pinMode[pinIndex] = MbitMorePinMode.TOUCH;
         });
       }
       return;
@@ -4977,7 +4580,7 @@ var MicrobitMore = /*#__PURE__*/function () {
     key: "sendData",
     value: function sendData(label, content, util) {
       var labelData = new Array(8).fill().map(function (_value, index) {
-        return label.charCodeAt(index);
+        return label.charCodeAt(index) || 0;
       });
       var contentNumber = Number(content);
       var contentData;
@@ -4993,9 +4596,14 @@ var MicrobitMore = /*#__PURE__*/function () {
         dataView.setFloat32(0, contentNumber, true);
         contentData = [dataView.getUint8(0), dataView.getUint8(1), dataView.getUint8(2), dataView.getUint8(3)];
       }
+      var cmdId = BLECommand.CMD_DATA << 5 | type;
+      var message = new Uint8Array([].concat(_toConsumableArray(labelData), _toConsumableArray(contentData)));
+      log.debug("[DATA SEND] label=\"".concat(label, "\" content=\"").concat(content, "\" type=").concat(type, " cmdId=0x").concat(cmdId.toString(16), " message=[").concat(Array.from(message).map(function (b) {
+        return '0x' + b.toString(16).padStart(2, '0');
+      }).join(', '), "]"));
       return this.sendCommandSet([{
-        id: BLECommand.CMD_DATA << 5 | type,
-        message: new Uint8Array([].concat(_toConsumableArray$1(labelData), _toConsumableArray$1(contentData)))
+        id: cmdId,
+        message: message
       }], util);
     }
 
@@ -5027,7 +4635,6 @@ var MicrobitMore = /*#__PURE__*/function () {
       return null;
     }
   }]);
-  return MicrobitMore;
 }();
 
 var formatMessage = function formatMessage(messageData) {
@@ -5040,7 +4647,6 @@ var formatMessage = function formatMessage(messageData) {
 var setupTranslations = function setupTranslations() {
   var localeSetup = formatMessage.setup();
   if (!localeSetup) return;
-
   var currentLocale = localeSetup.locale;
   if (!currentLocale) return;
 
@@ -5050,7 +4656,6 @@ var setupTranslations = function setupTranslations() {
   if (!translationKey && baseLocale !== currentLocale) {
     translationKey = translations[baseLocale] ? baseLocale : null;
   }
-
   if (localeSetup.translations[currentLocale] && translationKey) {
     Object.assign(localeSetup.translations[currentLocale], translations[translationKey]);
   }
@@ -5189,7 +4794,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
    * @param {Runtime} runtime - the Scratch 3.0 runtime.
    */
   function MicrobitMoreBlocks(runtime) {
-    _classCallCheck$1(this, MicrobitMoreBlocks);
+    _classCallCheck(this, MicrobitMoreBlocks);
     /**
      * The Scratch 3.0 runtime.
      * @type {Runtime}
@@ -5230,7 +4835,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
   /**
    * @returns {object} metadata for this extension and its blocks.
    */
-  _createClass$1(MicrobitMoreBlocks, [{
+  return _createClass(MicrobitMoreBlocks, [{
     key: "GESTURES_MENU",
     get:
     /**
@@ -5720,10 +5325,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'when micro:bit [STATE]',
             description: 'when a micro:bit connection state changed'
           }),
-          blockType: BlockType$1.HAT,
+          blockType: blockType.HAT,
           arguments: {
             STATE: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'connectionStateMenu',
               defaultValue: 'connected'
             }
@@ -5735,15 +5340,15 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'when button [NAME] is [EVENT]',
             description: 'when the selected button on the micro:bit get the selected event'
           }),
-          blockType: BlockType$1.HAT,
+          blockType: blockType.HAT,
           arguments: {
             NAME: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'buttonIDMenu',
               defaultValue: MbitMoreButtonName.A
             },
             EVENT: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'buttonEventMenu',
               defaultValue: MbitMoreButtonEventName.DOWN
             }
@@ -5755,10 +5360,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'button [NAME] pressed?',
             description: 'is the selected button on the micro:bit pressed?'
           }),
-          blockType: BlockType$1.BOOLEAN,
+          blockType: blockType.BOOLEAN,
           arguments: {
             NAME: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'buttonIDMenu',
               defaultValue: MbitMoreButtonName.A
             }
@@ -5770,15 +5375,15 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'when pin [NAME] is [EVENT]',
             description: 'when the selected touch pin on the micro:bit is touched'
           }),
-          blockType: BlockType$1.HAT,
+          blockType: blockType.HAT,
           arguments: {
             NAME: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'touchIDMenu',
               defaultValue: MbitMoreButtonName.LOGO
             },
             EVENT: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'touchEventMenu',
               defaultValue: MbitMoreButtonEventName.DOWN
             }
@@ -5790,10 +5395,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'pin [NAME] is touched?',
             description: 'is the selected pin is touched?'
           }),
-          blockType: BlockType$1.BOOLEAN,
+          blockType: blockType.BOOLEAN,
           arguments: {
             NAME: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'touchIDMenu',
               defaultValue: MbitMoreButtonName.LOGO
             }
@@ -5805,10 +5410,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'when [GESTURE]',
             description: 'when the selected gesture is detected by the micro:bit'
           }),
-          blockType: BlockType$1.HAT,
+          blockType: blockType.HAT,
           arguments: {
             GESTURE: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'gestures',
               defaultValue: MbitMoreGestureName.SHAKE
             }
@@ -5820,10 +5425,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'display pattern [MATRIX] ',
             description: 'display a pattern on the micro:bit display'
           }),
-          blockType: BlockType$1.COMMAND,
+          blockType: blockType.COMMAND,
           arguments: {
             MATRIX: {
-              type: ArgumentType$1.MATRIX,
+              type: argumentType.MATRIX,
               defaultValue: '0101010101100010101000100'
             }
           }
@@ -5834,14 +5439,14 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'display text [TEXT] delay [DELAY] ms',
             description: 'display text on the micro:bit display'
           }),
-          blockType: BlockType$1.COMMAND,
+          blockType: blockType.COMMAND,
           arguments: {
             TEXT: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               defaultValue: 'Hello!'
             },
             DELAY: {
-              type: ArgumentType$1.NUMBER,
+              type: argumentType.NUMBER,
               defaultValue: 120
             }
           }
@@ -5852,7 +5457,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'clear display',
             description: 'display nothing on the micro:bit display'
           }),
-          blockType: BlockType$1.COMMAND
+          blockType: blockType.COMMAND
         }, '---', {
           opcode: 'getLightLevel',
           text: formatMessage({
@@ -5860,7 +5465,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'light intensity',
             description: 'how much the amount of light falling on the LEDs on micro:bit'
           }),
-          blockType: BlockType$1.REPORTER
+          blockType: blockType.REPORTER
         }, {
           opcode: 'getTemperature',
           text: formatMessage({
@@ -5868,7 +5473,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'temperature',
             description: 'temperature (celsius) on the surface of CPU of micro:bit'
           }),
-          blockType: BlockType$1.REPORTER
+          blockType: blockType.REPORTER
         }, {
           opcode: 'getCompassHeading',
           text: formatMessage({
@@ -5876,7 +5481,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'angle with the North',
             description: 'angle from the North to the micro:bit heading direction'
           }),
-          blockType: BlockType$1.REPORTER
+          blockType: blockType.REPORTER
         }, {
           opcode: 'getPitch',
           text: formatMessage({
@@ -5884,7 +5489,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'pitch',
             description: 'nose up movement of the micro:bit from level'
           }),
-          blockType: BlockType$1.REPORTER
+          blockType: blockType.REPORTER
         }, {
           opcode: 'getRoll',
           text: formatMessage({
@@ -5892,7 +5497,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'roll',
             description: 'clockwise circular movement of the micro:bit from level'
           }),
-          blockType: BlockType$1.REPORTER
+          blockType: blockType.REPORTER
         }, {
           opcode: 'getSoundLevel',
           text: formatMessage({
@@ -5900,7 +5505,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'sound level',
             description: 'level of the sound from microphone on micro:bit'
           }),
-          blockType: BlockType$1.REPORTER
+          blockType: blockType.REPORTER
         }, {
           opcode: 'getMagneticForce',
           text: formatMessage({
@@ -5908,10 +5513,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'magnetic force',
             description: 'value of magnetic force (micro tesla)'
           }),
-          blockType: BlockType$1.REPORTER,
+          blockType: blockType.REPORTER,
           arguments: {
             AXIS: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'axis',
               defaultValue: AxisSymbol.Absolute
             }
@@ -5923,10 +5528,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'acceleration [AXIS]',
             description: 'value of acceleration on the axis (milli-g)'
           }),
-          blockType: BlockType$1.REPORTER,
+          blockType: blockType.REPORTER,
           arguments: {
             AXIS: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'axis',
               defaultValue: AxisSymbol.X
             }
@@ -5938,10 +5543,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'analog value of pin [PIN]',
             description: 'analog input value of the pin'
           }),
-          blockType: BlockType$1.REPORTER,
+          blockType: blockType.REPORTER,
           arguments: {
             PIN: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'analogInPins',
               defaultValue: '0'
             }
@@ -5953,15 +5558,15 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'set pin [PIN] to input [MODE]',
             description: 'set a pin into the mode'
           }),
-          blockType: BlockType$1.COMMAND,
+          blockType: blockType.COMMAND,
           arguments: {
             PIN: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'gpio',
               defaultValue: '0'
             },
             MODE: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'pinMode',
               defaultValue: MbitMorePullModeName.UP
             }
@@ -5973,10 +5578,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: '[PIN] pin is high?',
             description: 'is the selected pin high as digital?'
           }),
-          blockType: BlockType$1.BOOLEAN,
+          blockType: blockType.BOOLEAN,
           arguments: {
             PIN: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'gpio',
               defaultValue: '0'
             }
@@ -5988,15 +5593,15 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'set [PIN] Digital [LEVEL]',
             description: 'set pin to Digital Output mode and the level(High = true)'
           }),
-          blockType: BlockType$1.COMMAND,
+          blockType: blockType.COMMAND,
           arguments: {
             PIN: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'gpio',
               defaultValue: '0'
             },
             LEVEL: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'digitalValueMenu',
               defaultValue: 'false'
             }
@@ -6008,15 +5613,15 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'set [PIN] analog [LEVEL] %',
             description: 'set pin to PWM mode and the level(0 to 1023)'
           }),
-          blockType: BlockType$1.COMMAND,
+          blockType: blockType.COMMAND,
           arguments: {
             PIN: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'gpio',
               defaultValue: '0'
             },
             LEVEL: {
-              type: ArgumentType$1.NUMBER,
+              type: argumentType.NUMBER,
               defaultValue: 0
             }
           }
@@ -6027,23 +5632,23 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'set [PIN] Servo [ANGLE]',
             description: 'set pin to Servo mode and the angle(0 to 180)'
           }),
-          blockType: BlockType$1.COMMAND,
+          blockType: blockType.COMMAND,
           arguments: {
             PIN: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'gpio',
               defaultValue: '0'
             },
             ANGLE: {
-              type: ArgumentType$1.NUMBER,
+              type: argumentType.NUMBER,
               defaultValue: 0
             },
             RANGE: {
-              type: ArgumentType$1.NUMBER,
+              type: argumentType.NUMBER,
               defaultValue: 2000
             },
             CENTER: {
-              type: ArgumentType$1.NUMBER,
+              type: argumentType.NUMBER,
               defaultValue: 1500
             }
           }
@@ -6054,14 +5659,14 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'play tone [FREQ] Hz volume [VOL] %',
             description: 'play tone on the speaker'
           }),
-          blockType: BlockType$1.COMMAND,
+          blockType: blockType.COMMAND,
           arguments: {
             FREQ: {
-              type: ArgumentType$1.NUMBER,
+              type: argumentType.NUMBER,
               defaultValue: 440
             },
             VOL: {
-              type: ArgumentType$1.NUMBER,
+              type: argumentType.NUMBER,
               defaultValue: 100
             }
           }
@@ -6072,7 +5677,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'stop tone',
             description: 'stop tone on the speaker'
           }),
-          blockType: BlockType$1.COMMAND
+          blockType: blockType.COMMAND
         }, '---', {
           opcode: 'listenPinEventType',
           text: formatMessage({
@@ -6080,15 +5685,15 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'listen [EVENT_TYPE] event on [PIN]',
             description: 'listen the event on the pin'
           }),
-          blockType: BlockType$1.COMMAND,
+          blockType: blockType.COMMAND,
           arguments: {
             EVENT_TYPE: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'pinEventTypeMenu',
               defaultValue: 'NONE'
             },
             PIN: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'gpio',
               defaultValue: '0'
             }
@@ -6100,15 +5705,15 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'when catch [EVENT] at pin [PIN]',
             description: 'when catch the event at the pin'
           }),
-          blockType: BlockType$1.HAT,
+          blockType: blockType.HAT,
           arguments: {
             EVENT: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'pinEventMenu',
               defaultValue: 'PULSE_LOW'
             },
             PIN: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'gpio',
               defaultValue: '0'
             }
@@ -6120,15 +5725,15 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'value of [EVENT] at [PIN]',
             description: 'value of the value of the event (timestamp of the edge or duration of the pulse)'
           }),
-          blockType: BlockType$1.REPORTER,
+          blockType: blockType.REPORTER,
           arguments: {
             EVENT: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'pinEventTimestampMenu',
               defaultValue: 'PULSE_LOW'
             },
             PIN: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               menu: 'gpio',
               defaultValue: '0'
             }
@@ -6140,10 +5745,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'when data with label [LABEL] received from micro:bit',
             description: 'when the data which has the label received'
           }),
-          blockType: BlockType$1.HAT,
+          blockType: blockType.HAT,
           arguments: {
             LABEL: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               defaultValue: 'label-01'
             }
           }
@@ -6154,10 +5759,10 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'data of label [LABEL]',
             description: 'the last data which has the label'
           }),
-          blockType: BlockType$1.REPORTER,
+          blockType: blockType.REPORTER,
           arguments: {
             LABEL: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               defaultValue: 'label-01'
             }
           }
@@ -6168,14 +5773,14 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
             default: 'send data [DATA] with label [LABEL] to micro:bit',
             description: 'send data content with label to micro:bit'
           }),
-          blockType: BlockType$1.COMMAND,
+          blockType: blockType.COMMAND,
           arguments: {
             LABEL: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               defaultValue: 'label-01'
             },
             DATA: {
-              type: ArgumentType$1.STRING,
+              type: argumentType.STRING,
               defaultValue: 'data'
             }
           }
@@ -6403,7 +6008,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
   }, {
     key: "displayMatrix",
     value: function displayMatrix(args, util) {
-      var matrixString = Cast$1.toString(args.MATRIX).replace(/[０-９，]/g, function (ws) {
+      var matrixString = cast.toString(args.MATRIX).replace(/[０-９，]/g, function (ws) {
         return String.fromCharCode(ws.charCodeAt(0) - 0xFEE0);
       }); // zenkaku to hankaku
       var matrixData;
@@ -6451,7 +6056,7 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
     key: "displayText",
     value: function displayText(args, util) {
       // zenkaku to hankaku
-      var text = Cast$1.toString(args.TEXT).replace(/[Ａ-Ｚａ-ｚ０-９！-～]/g, function (ws) {
+      var text = cast.toString(args.TEXT).replace(/[Ａ-Ｚａ-ｚ０-９！-～]/g, function (ws) {
         return String.fromCharCode(ws.charCodeAt(0) - 0xFEE0);
       }).replace(/”/g, '"').replace(/’/g, "'").replace(/‘/g, '`').replace(/￥/g, '\\')
       // eslint-disable-next-line no-irregular-whitespace
@@ -6795,14 +6400,14 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
           events = _ref8[1];
         _this8.prevPinEvents[pinIndex] = {};
         Object.entries(events).forEach(function (_ref9) {
-          var _ref10 = _slicedToArray(_ref9, 2),
-            eventID = _ref10[0],
-            eventData = _ref10[1];
+          var _ref0 = _slicedToArray(_ref9, 2),
+            eventID = _ref0[0],
+            eventData = _ref0[1];
           _this8.prevPinEvents[pinIndex][eventID] = {};
-          Object.entries(eventData).forEach(function (_ref11) {
-            var _ref12 = _slicedToArray(_ref11, 2),
-              key = _ref12[0],
-              value = _ref12[1];
+          Object.entries(eventData).forEach(function (_ref1) {
+            var _ref10 = _slicedToArray(_ref1, 2),
+              key = _ref10[0],
+              value = _ref10[1];
             _this8.prevPinEvents[pinIndex][eventID][key] = value;
           });
         });
@@ -6872,18 +6477,18 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
   }, {
     key: "updatePrevReceivedData",
     value: function updatePrevReceivedData() {
-      var _this10 = this;
+      var _this0 = this;
       this.prevReceivedData = {};
-      Object.entries(this.microbit.receivedData).forEach(function (_ref13) {
-        var _ref14 = _slicedToArray(_ref13, 2),
-          label = _ref14[0],
-          contentObject = _ref14[1];
-        _this10.prevReceivedData[label] = {};
-        Object.entries(contentObject).forEach(function (_ref15) {
-          var _ref16 = _slicedToArray(_ref15, 2),
-            key = _ref16[0],
-            value = _ref16[1];
-          _this10.prevReceivedData[label][key] = value;
+      Object.entries(this.microbit.receivedData).forEach(function (_ref11) {
+        var _ref12 = _slicedToArray(_ref11, 2),
+          label = _ref12[0],
+          contentObject = _ref12[1];
+        _this0.prevReceivedData[label] = {};
+        Object.entries(contentObject).forEach(function (_ref13) {
+          var _ref14 = _slicedToArray(_ref13, 2),
+            key = _ref14[0],
+            value = _ref14[1];
+          _this0.prevReceivedData[label][key] = value;
         });
       });
     }
@@ -6911,11 +6516,11 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
   }, {
     key: "whenDataReceived",
     value: function whenDataReceived(args) {
-      var _this11 = this;
+      var _this1 = this;
       if (!this.updateLastDataTimer) {
         this.updateLastDataTimer = setTimeout(function () {
-          _this11.updatePrevReceivedData();
-          _this11.updateLastDataTimer = null;
+          _this1.updatePrevReceivedData();
+          _this1.updateLastDataTimer = null;
         }, this.runtime.currentStepTime);
       }
       var label = args.LABEL;
@@ -6990,7 +6595,6 @@ var MicrobitMoreBlocks = /*#__PURE__*/function () {
       extensionURL = url;
     }
   }]);
-  return MicrobitMoreBlocks;
 }();
 
 export { MicrobitMoreBlocks as blockClass, entry };

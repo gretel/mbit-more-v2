@@ -17,7 +17,22 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(unzip:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(gh repo view:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:api.github.com)",
+      "Bash([ -d ../scratch-gui ])",
+      "Bash([ -f ../scratch-gui/package.json ])",
+      "Bash(git clone:*)",
+      "Bash(npm install)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(npm outdated:*)",
+      "Bash(npm view:*)",
+      "Bash(npm audit:*)",
+      "Bash(md5:*)",
+      "Bash(git tag:*)"
     ],
     "deny": [],
     "ask": []
